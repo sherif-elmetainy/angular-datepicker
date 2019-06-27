@@ -2,7 +2,7 @@
   "name": "@code-art/angular-datepicker",
   "version": "8.0.0",
   "private": false,
-  "description": "A date and time picker for Angular 6/7/8",
+  "description": "A date and time picker for Angular 8",
   "author": "Sherif Elmetainy (Code Art)",
   "license": "MIT",
   "bugs": {

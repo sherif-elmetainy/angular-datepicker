@@ -2,7 +2,7 @@
 
 ## About the library
 
-The `@code-art/angular-datepicker` library is a javascript library that a datepicker for [Angular 6](https://angular.io). 
+The `@code-art/angular-datepicker` library is a javascript library that a datepicker for [Angular 8](https://angular.io). 
 
 ## Consuming the library
 
