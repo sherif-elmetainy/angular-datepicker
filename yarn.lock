@@ -320,10 +320,10 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@code-art/angular-globalize@^8.0.0":
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/@code-art/angular-globalize/-/angular-globalize-8.0.0.tgz#6c978c25cf283b07a4a24f97e09ff3e25d55ee20"
-  integrity sha512-OlbejweY160Z5pPnkUJzSGqZXz/6GLuV4tMBZ696CNDpDXGRmNNVhYsRY4BDd9u8SxY8jxxXsbu9yUVnm1MSSQ==
+"@code-art/angular-globalize@^8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@code-art/angular-globalize/-/angular-globalize-8.0.1.tgz#5695149d1998925008846db0b958f58b36b60250"
+  integrity sha512-2dyYuVEuT44TKda6ccyHTrljAGynBdG8JoxEjyx7Dehrmt1BKfOKMkYCSdIaUN6yXdXA2sRreg4p60Be7mO2oQ==
   dependencies:
     tslib "^1.9.0"
 

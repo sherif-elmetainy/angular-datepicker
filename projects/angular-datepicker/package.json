@@ -24,9 +24,9 @@
     "@angular/common": "^8.0.0",
     "@angular/core": "^8.0.0",
     "@angular/forms": "^8.0.0",
-    "@code-art/angular-globalize": "~8.0.0",
+    "@code-art/angular-globalize": "~8.0.1",
     "cldr-data": ">=32.0.0",
     "globalize": "^1.4.0",
-    "rxjs": "^6.1.0"
+    "rxjs": "^6.4.0"
   }
 }
