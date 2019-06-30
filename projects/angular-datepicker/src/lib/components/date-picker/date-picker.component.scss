@@ -4,6 +4,7 @@
   display: inline-block;
   position: relative;
   @extend .common-container;
+  @include user-select();
 
   div {
     top: 0;
@@ -25,5 +26,214 @@
       background: white;
       cursor: not-allowed;
     }
+  }
+}
+
+.days-view {
+  table {
+    min-width: $defaultCellSize * 7;
+    table-layout: fixed;
+
+    colgroup {
+      col {
+        width: $defaultCellSize;
+      }
+    }
+  }
+
+  th,
+  td {
+    text-align: center;
+    padding: $dayViewDefaultPadding;
+    font-size: $fontSize;
+    min-height: $defaultCellSize;
+    min-width: $defaultCellSize;
+  }
+
+  tr:first-child {
+    th {
+      width: initial;
+      height: inherit;
+      padding: 0;
+    }
+  }
+
+  th {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  td {
+    &.day {
+
+      &:hover,
+      &.focused {
+        background-color: $hoverColor;
+        @include border-radius($dayBorderRadius);
+        cursor: pointer;
+      }
+
+      &.disabled {
+        color: $disabledColor;
+        cursor: not-allowed;
+      }
+
+      &.other {
+        color: $disabledColor;
+      }
+
+      &.highlight {
+        background-color: $highlighColor;
+
+        &:hover,
+        &.focused {
+          background-color: darken($highlighColor, 20%);
+        }
+      }
+
+      &.selected {
+        background-color: $selectedColor;
+        @include border-radius(0);
+
+        &:hover,
+        &.focused {
+          background-color: darken($selectedColor, 20%);
+        }
+      }
+
+      &.today {
+        background-color: $todayhighlight;
+        @include border-radius($dayBorderRadius);
+
+        &:hover,
+        &.focused {
+          background-color: darken($todayhighlight, 20%);
+        }
+
+        &.selected {
+          @include border-radius(0);
+        }
+      }
+
+      &.selection-start {
+        background-color: $selectionStart;
+        color: $selectionTextColor;
+        @include border-radius($dayBorderRadius);
+
+        &:hover,
+        &.focused {
+          background-color: darken($selectionStart, 20%);
+        }
+      }
+
+      &.selection-end {
+        background-color: $selectionEnd;
+        color: $selectionTextColor;
+        @include border-radius($dayBorderRadius);
+
+        &:hover,
+        &.focused {
+          background-color: darken($selectionEnd, 20%);
+        }
+      }
+    }
+  }
+
+  &.ltr {
+    td {
+      &.day.multi {
+        &.selection-start {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+        &.selection-end {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+    }
+  }
+
+  &.rtl {
+    td {
+      &.day.multi {
+        &.selection-start {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+
+        &.selection-end {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+    }
+  }
+}
+
+$hundredpercent: 100%;
+
+.next-prev-container {
+  width: 100%;
+  table-layout: fixed;
+
+  td {
+    padding: 0 $dayViewDefaultPadding;
+    text-align: center;
+    cursor: pointer;
+    color: $buttonColor;
+
+    span {
+      &.reset-button {
+        color: $resetColor;
+      }
+    }
+  }
+
+  .next,
+  .prev {
+    width: $hundredpercent/7;
+  }
+
+  .next-prev-title {
+    width: $hundredpercent * 5 /7;
+
+    >div {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+
+      >div {
+        position: relative;
+        flex-grow: 1;
+        flex-basis: 60%;
+        &:hover {
+          color: $buttonHoverColor;
+          background-color: $hoverColor;
+          @include border-radius($defaultRadius);
+        }
+
+        &.home, &.reset {
+          flex-grow: 0;
+          flex-basis: 20%;
+        }
+        div.selection-container {
+          position: absolute;
+          top: 100%;
+          left: -20%;
+          width: 200%;
+          height: $defaultCellSize * 7 * .8;
+          z-index: 1;
+          background-color: white;
+
+          &.year {
+            width: 200%;
+            left: -60%;
+          }
+        }
+      }
+    }
+
   }
 }

@@ -8,17 +8,17 @@ import { DateRangePickerComponent } from './date-range-picker.component';
 
 
 describe('DateRangePickerComponent', () => {
-    let fixture: ComponentFixture<DateRangePickerComponent>;
-    let component: DateRangePickerComponent;
-    beforeEach(async () => {
-        initComponentTest(NextPreviousComponent, YearsViewComponent, MonthsViewComponent, DaysViewComponent, DateRangePickerComponent);
-        fixture = TestBed.createComponent(DateRangePickerComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-        await fixture.whenStable();
-    });
+  let fixture: ComponentFixture<DateRangePickerComponent>;
+  let component: DateRangePickerComponent;
+  beforeEach(async () => {
+    initComponentTest(NextPreviousComponent, YearsViewComponent, MonthsViewComponent, DaysViewComponent, DateRangePickerComponent);
+    fixture = TestBed.createComponent(DateRangePickerComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    await fixture.whenStable();
+  });
 
-    it('inits correctly', () => {
-        expect(component).toBeTruthy();
-    });
+  it('inits correctly', () => {
+    expect(component).toBeTruthy();
+  });
 });

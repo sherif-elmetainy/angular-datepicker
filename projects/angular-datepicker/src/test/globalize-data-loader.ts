@@ -29,31 +29,31 @@ import timeZonesAr from 'cldr-data/main/ar-EG/timeZoneNames.json';
 import posixAr from 'cldr-data/main/ar-EG/posix.json';
 
 export function loadGlobalizeData() {
-    Globalize.loadTimeZone(timezones);
+  Globalize.loadTimeZone(timezones);
 
-    Globalize.load(likelySubtags);
-    Globalize.load(numberingSystems);
-    Globalize.load(currencyData);
-    Globalize.load(metaZones);
-    Globalize.load(timeData);
-    Globalize.load(weekData);
-    Globalize.load(plurals);
+  Globalize.load(likelySubtags);
+  Globalize.load(numberingSystems);
+  Globalize.load(currencyData);
+  Globalize.load(metaZones);
+  Globalize.load(timeData);
+  Globalize.load(weekData);
+  Globalize.load(plurals);
 
-    Globalize.load(numbersDe);
-    Globalize.load(calendarDe);
-    Globalize.load(timeZonesDe);
-    Globalize.load(currencyDe);
-    Globalize.load(posixDe);
+  Globalize.load(numbersDe);
+  Globalize.load(calendarDe);
+  Globalize.load(timeZonesDe);
+  Globalize.load(currencyDe);
+  Globalize.load(posixDe);
 
-    Globalize.load(numbersEn);
-    Globalize.load(calendarEn);
-    Globalize.load(timeZonesEn);
-    Globalize.load(currencyEn);
-    Globalize.load(posixEn);
+  Globalize.load(numbersEn);
+  Globalize.load(calendarEn);
+  Globalize.load(timeZonesEn);
+  Globalize.load(currencyEn);
+  Globalize.load(posixEn);
 
-    Globalize.load(numbersAr);
-    Globalize.load(calendarAr);
-    Globalize.load(timeZonesAr);
-    Globalize.load(currencyAr);
-    Globalize.load(posixAr);
+  Globalize.load(numbersAr);
+  Globalize.load(calendarAr);
+  Globalize.load(timeZonesAr);
+  Globalize.load(currencyAr);
+  Globalize.load(posixAr);
 }

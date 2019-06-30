@@ -4,10 +4,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { ICON_COMPONENTS } from './components/icons/index';
-import { NextPreviousComponent } from './components/next-prev/next-prev.component';
-import { MonthsViewComponent } from './components/months-view/months-view.component';
-import { YearsViewComponent } from './components/years-view/years-view.component';
-import { DaysViewComponent } from './components/days-view/days-view.component';
 import { PopupHostDirective } from './directives/popup-host.directive';
 import { PopupComponent } from './components/popup/popup.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
@@ -20,9 +16,8 @@ import { DateTimePickerDirective } from './directives/datetime-picker.directive'
 import { TimePickerDirective } from './directives/time-picker.directive';
 import { PopupDirective } from './directives/popup.directive';
 import { applyMixins } from './util';
-import { TimePickerOptions } from './time-picker-options';
-import { BaseTimeValueAccessor } from './base-time-value-accessor';
 import { BaseDatePickerDirective } from './directives/base-date-picker-directive';
+import { SelectionScrollComponent } from './components/selection-scroll/selection-scroll.component';
 
 
 @NgModule({
@@ -31,10 +26,6 @@ import { BaseDatePickerDirective } from './directives/base-date-picker-directive
   ],
   declarations: [
     ICON_COMPONENTS,
-    NextPreviousComponent,
-    DaysViewComponent,
-    MonthsViewComponent,
-    YearsViewComponent,
     PopupHostDirective,
     PopupComponent,
     DatePickerComponent,
@@ -45,6 +36,7 @@ import { BaseDatePickerDirective } from './directives/base-date-picker-directive
     DateRangePickerDirective,
     DateTimePickerDirective,
     TimePickerDirective,
+    SelectionScrollComponent,
   ],
   exports: [
     DatePickerComponent,
@@ -67,9 +59,7 @@ import { BaseDatePickerDirective } from './directives/base-date-picker-directive
 export class AngularDatepickerModule {
   constructor() {
     applyMixins(TimePickerDirective, PopupDirective);
-    applyMixins(DateTimePickerComponent, TimePickerOptions);
-    applyMixins(BaseTimeValueAccessor, TimePickerOptions);
     applyMixins(BaseDatePickerDirective, PopupDirective);
-    applyMixins(DateTimePickerDirective, PopupDirective, TimePickerOptions);
+    applyMixins(DateTimePickerDirective, PopupDirective);
   }
 }

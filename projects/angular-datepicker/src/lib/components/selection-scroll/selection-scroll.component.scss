@@ -1,0 +1,24 @@
+@import "../../styles/common";
+
+.selection-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+.selection {
+  border: 1px solid $hoverColor;
+  padding: 0.1em 0.3em;
+  cursor: pointer;
+  text-align: center;
+  &.selected {
+    background-color: $selectionStart;
+    color: $selectionTextColor;
+  }
+  &:hover {
+    background-color: $hoverColor;
+    color: $textColor;
+  }
+}
+
+

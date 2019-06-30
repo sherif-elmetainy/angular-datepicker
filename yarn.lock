@@ -308,6 +308,13 @@
   dependencies:
     tslib "^1.9.0"
 
+"@code-art/rx-helpers@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@code-art/rx-helpers/-/rx-helpers-1.3.0.tgz#62062d03ec20b78c5446867e74500cdc7f407c4e"
+  integrity sha512-e/LrG0XiuWnU6DwjlelwxPCsKdfgDDOrvdLhTR4VbCWuaY8h39HXuyvdtduT9cDAIsh9AYU2siXHIVVtAedM3A==
+  dependencies:
+    tslib "^1.9.0"
+
 "@ngtools/json-schema@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@ngtools/json-schema/-/json-schema-1.1.0.tgz#c3a0c544d62392acc2813a42c8a0dc6f58f86922"
@@ -2145,6 +2152,11 @@ dashdash@^1.12.0:
   integrity sha1-hTz6D3y+L+1d4gMmuN1YEDX24vA=
   dependencies:
     assert-plus "^1.0.0"
+
+date-fns@^1.30.1:
+  version "1.30.1"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
+  integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
 
 date-format@^2.0.0:
   version "2.0.0"

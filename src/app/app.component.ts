@@ -10,6 +10,6 @@ export class AppComponent {
   public valpr: any;
   public vald: any;
   public valp: any;
-  public valt: number;
-  public valts: number;
+  public valt: number|null = null;
+  public valts: number|null = null;
 }

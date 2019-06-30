@@ -10,18 +10,18 @@ import { DatePickerComponent } from '../date-picker/date-picker.component';
 
 
 describe('DateTimePickerComponent', () => {
-    let fixture: ComponentFixture<DateTimePickerComponent>;
-    let component: DateTimePickerComponent;
-    beforeEach(async () => {
-        initComponentTest(NextPreviousComponent, YearsViewComponent, MonthsViewComponent,
-            DaysViewComponent, DatePickerComponent, TimePickerComponent, DateTimePickerComponent);
-        fixture = TestBed.createComponent(DateTimePickerComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-        await fixture.whenStable();
-    });
+  let fixture: ComponentFixture<DateTimePickerComponent>;
+  let component: DateTimePickerComponent;
+  beforeEach(async () => {
+    initComponentTest(NextPreviousComponent, YearsViewComponent, MonthsViewComponent,
+      DaysViewComponent, DatePickerComponent, TimePickerComponent, DateTimePickerComponent);
+    fixture = TestBed.createComponent(DateTimePickerComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    await fixture.whenStable();
+  });
 
-    it('inits correctly', () => {
-        expect(component).toBeTruthy();
-    });
+  it('inits correctly', () => {
+    expect(component).toBeTruthy();
+  });
 });

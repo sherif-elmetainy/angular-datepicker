@@ -3,21 +3,7 @@
 table {
   @extend .common-container;
   min-width: $defaultCellSize * 7;
-  td.viewbutton {
-    text-align: center;
-    padding: $dayViewDefaultPadding;
-
-    span {
-      color: $buttonColor;
-    }
-
-    &:hover {
-      background-color: $hoverColor;
-      @include border-radius($dayBorderRadius);
-
-      span {
-        color: $buttonHoverColor;
-      }
-    }
+  div.time-container {
+    height: $defaultCellSize * 7 * .8;
   }
 }

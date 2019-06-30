@@ -14,3 +14,7 @@
 @mixin border-radius($radius: 5px) {
     @include css3-prefix("border-radius", $radius);
 }
+
+@mixin user-select($val: none) {
+  @include css3-prefix("user-select", $val);
+}

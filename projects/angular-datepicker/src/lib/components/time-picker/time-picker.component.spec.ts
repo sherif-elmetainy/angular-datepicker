@@ -4,17 +4,17 @@ import { TimePickerComponent } from './time-picker.component';
 
 
 describe('DateRangePickerComponent', () => {
-    let fixture: ComponentFixture<TimePickerComponent>;
-    let component: TimePickerComponent;
-    beforeEach(async () => {
-        initComponentTest(TimePickerComponent);
-        fixture = TestBed.createComponent(TimePickerComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-        await fixture.whenStable();
-    });
+  let fixture: ComponentFixture<TimePickerComponent>;
+  let component: TimePickerComponent;
+  beforeEach(async () => {
+    initComponentTest(TimePickerComponent);
+    fixture = TestBed.createComponent(TimePickerComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    await fixture.whenStable();
+  });
 
-    it('inits correctly', () => {
-        expect(component).toBeTruthy();
-    });
+  it('inits correctly', () => {
+    expect(component).toBeTruthy();
+  });
 });

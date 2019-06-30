@@ -10,12 +10,12 @@ import { IconHomeComponent } from './icon-home.component';
 import { IconTimesComponent } from './icon-times.component';
 
 export const ICON_COMPONENTS: Array<Type<any>> = [
-    IconCalendarAltComponent,
-    IconChevronDownComponent,
-    IconChevronLeftComponent,
-    IconChevronRightComponent,
-    IconChevronUpComponent,
-    IconClockComponent,
-    IconHomeComponent,
-    IconTimesComponent,
+  IconCalendarAltComponent,
+  IconChevronDownComponent,
+  IconChevronLeftComponent,
+  IconChevronRightComponent,
+  IconChevronUpComponent,
+  IconClockComponent,
+  IconHomeComponent,
+  IconTimesComponent,
 ];

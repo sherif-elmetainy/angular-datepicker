@@ -5,16 +5,16 @@ import { DateRangePickerComponent } from '../components/date-picker/date-range-p
 import { BaseDatePickerDirective } from './base-date-picker-directive';
 
 @Directive({
-    providers: [{
-        multi: true,
-        provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => DateRangePickerDirective),
-    }],
-    selector: '[cadpDateRangePicker]',
+  providers: [{
+    multi: true,
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => DateRangePickerDirective),
+  }],
+  selector: '[cadpDateRangePicker]',
 })
 export class DateRangePickerDirective extends BaseDatePickerDirective {
-    public rangeSelection = true;
+  public rangeSelection = true;
 
-    public resolveFactory(resolver: ComponentFactoryResolver): ComponentFactory<BaseDatePickerComponent> {
-        return resolver.resolveComponentFactory(DateRangePickerComponent);
-    }
+  public resolveFactory(resolver: ComponentFactoryResolver): ComponentFactory<BaseDatePickerComponent> {
+    return resolver.resolveComponentFactory(DateRangePickerComponent);
+  }
 }
