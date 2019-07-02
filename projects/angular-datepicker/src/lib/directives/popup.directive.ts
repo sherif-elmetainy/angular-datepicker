@@ -113,7 +113,7 @@ export abstract class PopupDirective<T> implements OnInit, OnDestroy, IPopupDire
   }
 
   get orientTop(): boolean {
-    if (this._orientTop === null) {
+    if (this._orientTop === undefined || this._orientTop === null) {
       if (this._el && this._el.nativeElement) {
         const htmlEl = this._el.nativeElement as HTMLElement;
         if (typeof htmlEl.getBoundingClientRect === 'function' && window) {
@@ -136,7 +136,7 @@ export abstract class PopupDirective<T> implements OnInit, OnDestroy, IPopupDire
   }
 
   public get orientRight(): boolean | undefined {
-    return this._orientRight === undefined ?
+    return this._orientRight === undefined || this._orientRight === null ?
       this.cultureService.isRightToLeft(this.effectiveLocale) : this._orientRight;
   }
 
