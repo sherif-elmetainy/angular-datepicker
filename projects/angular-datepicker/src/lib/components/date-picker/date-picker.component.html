@@ -7,44 +7,38 @@
       <thead>
         <tr>
           <th colspan="7">
-            <table class="next-prev-container">
-              <tr>
-                <td class="prev" (click)="month = month - 1">
-                  <cadp-icon-chevron-left *ngIf="!isRtl"></cadp-icon-chevron-left>
-                  <cadp-icon-chevron-right *ngIf="isRtl"></cadp-icon-chevron-right>
-                </td>
+            <div class="next-prev-container">
+              <div class="prev" (click)="month = month - 1">
+                <cadp-icon-chevron-left *ngIf="!isRtl"></cadp-icon-chevron-left>
+                <cadp-icon-chevron-right *ngIf="isRtl"></cadp-icon-chevron-right>
+              </div>
 
-                <td class="next-prev-title">
-                  <div>
-                    <div *ngIf="homeButton" class="home" (click)="goHome()">
-                      <cadp-icon-home></cadp-icon-home>
-                    </div>
-                    <div *ngIf="resetButton" class="reset" (click)="reset()">
-                      <cadp-icon-times></cadp-icon-times>
-                    </div>
-                    <div (click)="monthPickerVisible = !monthPickerVisible; yearPickerVisible = false;">
-                      {{ month | gmonth }}
-                      <div class="selection-container" *ngIf="monthPickerVisible">
-                        <cadp-selection-scroll [minValue]="0" [maxValue]="11" [(value)]="month"
-                          (dismissed)="monthPickerVisible = false" [formatter]="monthFormatter">
-                        </cadp-selection-scroll>
-                      </div>
-                    </div>
-                    <div (click)="monthPickerVisible = false; yearPickerVisible = !yearPickerVisible;">
-                      {{ yearFormatter(year) }}
-                      <div class="selection-container year" *ngIf="yearPickerVisible">
-                        <cadp-selection-scroll [minValue]="minYear" [maxValue]="maxYear" [(value)]="year"
-                          (dismissed)="yearPickerVisible = false" [formatter]="yearFormatter"></cadp-selection-scroll>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td class="next" (click)="month = month + 1">
-                  <cadp-icon-chevron-left *ngIf="isRtl"></cadp-icon-chevron-left>
-                  <cadp-icon-chevron-right *ngIf="!isRtl"></cadp-icon-chevron-right>
-                </td>
-              </tr>
-            </table>
+              <div *ngIf="homeButton" class="home" (click)="goHome()">
+                <cadp-icon-home></cadp-icon-home>
+              </div>
+              <div *ngIf="resetButton" class="reset" (click)="reset()">
+                <cadp-icon-times></cadp-icon-times>
+              </div>
+              <div class="month" (click)="monthPickerVisible = !monthPickerVisible; yearPickerVisible = false;">
+                {{ month | gmonth }}
+                <div class="selection-container" *ngIf="monthPickerVisible">
+                  <cadp-selection-scroll [minValue]="0" [maxValue]="11" [(value)]="month"
+                    (dismissed)="monthPickerVisible = false" [formatter]="monthFormatter">
+                  </cadp-selection-scroll>
+                </div>
+              </div>
+              <div class="year" (click)="monthPickerVisible = false; yearPickerVisible = !yearPickerVisible;">
+                {{ yearFormatter(year) }}
+                <div class="selection-container" *ngIf="yearPickerVisible">
+                  <cadp-selection-scroll [minValue]="minYear" [maxValue]="maxYear" [(value)]="year"
+                    (dismissed)="yearPickerVisible = false" [formatter]="yearFormatter"></cadp-selection-scroll>
+                </div>
+              </div>
+              <div class="next" (click)="month = month + 1">
+                <cadp-icon-chevron-left *ngIf="isRtl"></cadp-icon-chevron-left>
+                <cadp-icon-chevron-right *ngIf="!isRtl"></cadp-icon-chevron-right>
+              </div>
+            </div>
 
 
           </th>

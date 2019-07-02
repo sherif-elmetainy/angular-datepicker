@@ -1,17 +1,22 @@
 @import "../../styles/common";
 
-table {
-  @extend .common-container;
-  min-width: $defaultCellSize * 7;
+.datetime-picker {
+  display: inline-block;
 
-  div.time-container {
-    height: $cellHeight * 8;
-  }
+  >div {
+    display: flex;
+    flex-direction: row;
+    font-size: $fontSize;
 
-  td {
-    padding: 0;
-  }
-  td.spacer {
-   padding: 0.2rem;
+    >div {
+
+      &.time-container {
+        height: $cellHeight * 8;
+      }
+
+      &.spacer {
+        width: .5em;
+      }
+    }
   }
 }

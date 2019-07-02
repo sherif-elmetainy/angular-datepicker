@@ -13,7 +13,6 @@
   div {
     top: 0;
     bottom: 0;
-    width: 100%;
     padding: 0;
 
     &.picker {
@@ -178,66 +177,30 @@ $hundredpercent: 100%;
 
 .next-prev-container {
   width: 100%;
-  table-layout: fixed;
-
-  td {
-    padding: 0 $dayViewDefaultPadding;
-    text-align: center;
-    cursor: pointer;
-    color: $buttonColor;
-
-    span {
-      &.reset-button {
-        color: $resetColor;
-      }
+  display: flex;
+  flex-direction: row;
+  height: $cellHeight;
+  > div {
+    position: relative;
+    line-height: $cellHeight;
+    .selection-container {
+      position: absolute;
+      height: $cellHeight * 7;
+      z-index: 1;
+      top: 100%;
+      background-color: white;
     }
-  }
-
-  .next,
-  .prev {
-    width: $hundredpercent/7;
-  }
-
-  .next-prev-title {
-    width: $hundredpercent * 5 /7;
-
-    >div {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-
-      >div {
-        position: relative;
-        flex-grow: 1;
-        flex-basis: 60%;
-        line-height: $cellHeight;
-        &:hover {
-          color: $buttonHoverColor;
-          background-color: $hoverColor;
-          @include border-radius($defaultRadius);
-        }
-
-        &.home, &.reset {
-          flex-grow: 0;
-          flex-basis: 20%;
-
-        }
-        div.selection-container {
-          position: absolute;
-          top: 100%;
-          left: -20%;
-          width: 200%;
-          height: $cellHeight * 7;
-          z-index: 1;
-          background-color: white;
-
-          &.year {
-            width: 200%;
-            left: -60%;
-          }
-        }
-      }
+    &.next, &.prev {
+      flex: 0 0 14.2857142857%;
     }
-
+    &.home, &.reset {
+      flex: 0 1 10%;
+    }
+    &.year {
+      flex: 0 1 20%;
+    }
+    &.month {
+      flex: 0 1 31.42857%;
+    }
   }
 }
