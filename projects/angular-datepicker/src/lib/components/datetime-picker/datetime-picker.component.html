@@ -1,8 +1,9 @@
-<table>
+<table glbDirection>
   <tr>
     <td>
       <cadp-datepicker [(value)]="dateValue"></cadp-datepicker>
     </td>
+    <td class="spacer">&nbsp;</td>
     <td>
       <div class="time-container">
         <cadp-selection-scroll [minValue]="0" [maxValue]="24 * 60 / minutesStep - 1" [(value)]="timeSelectionValue"

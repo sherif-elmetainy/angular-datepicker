@@ -1,17 +1,19 @@
 @import "../../styles/common";
 
 .date-picker-container {
-  display: inline-block;
+  display: table;
   position: relative;
+  font-size: $fontSize;
   @extend .common-container;
   @include user-select();
+  border: $borderSize solid $borderColor;
+  box-sizing: border-box;
+  min-width: $defaultCellSize * 7;
 
   div {
     top: 0;
     bottom: 0;
     width: 100%;
-    height: 100%;
-    margin: 0;
     padding: 0;
 
     &.picker {
@@ -30,6 +32,7 @@
 }
 
 .days-view {
+  margin: -$borderSize 0;
   table {
     min-width: $defaultCellSize * 7;
     table-layout: fixed;
@@ -45,8 +48,7 @@
   td {
     text-align: center;
     padding: $dayViewDefaultPadding;
-    font-size: $fontSize;
-    min-height: $defaultCellSize;
+    height: $cellHeight;
     min-width: $defaultCellSize;
   }
 
@@ -208,6 +210,7 @@ $hundredpercent: 100%;
         position: relative;
         flex-grow: 1;
         flex-basis: 60%;
+        line-height: $cellHeight;
         &:hover {
           color: $buttonHoverColor;
           background-color: $hoverColor;
@@ -217,13 +220,14 @@ $hundredpercent: 100%;
         &.home, &.reset {
           flex-grow: 0;
           flex-basis: 20%;
+
         }
         div.selection-container {
           position: absolute;
           top: 100%;
           left: -20%;
           width: 200%;
-          height: $defaultCellSize * 7 * .8;
+          height: $cellHeight * 7;
           z-index: 1;
           background-color: white;
 

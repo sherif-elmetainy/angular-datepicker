@@ -3,7 +3,15 @@
 table {
   @extend .common-container;
   min-width: $defaultCellSize * 7;
+
   div.time-container {
-    height: $defaultCellSize * 7 * .8;
+    height: $cellHeight * 8;
+  }
+
+  td {
+    padding: 0;
+  }
+  td.spacer {
+   padding: 0.2rem;
   }
 }

@@ -4,21 +4,35 @@
   overflow-y: auto;
   overflow-x: hidden;
   height: 100%;
+  min-width: 4em;
 }
 
 .selection {
-  border: 1px solid $hoverColor;
+  border: $borderSize solid $borderColor;
+  box-sizing: border-box;
+  border-top: none;
+  height: $cellHeight;
+  line-height: $cellHeight;
+
+  &:first-child {
+    border-top: .0833333em solid $hoverColor;
+  }
+
   padding: 0.1em 0.3em;
   cursor: pointer;
   text-align: center;
-  &.selected {
-    background-color: $selectionStart;
-    color: $selectionTextColor;
-  }
+
   &:hover {
     background-color: $hoverColor;
     color: $textColor;
   }
+
+  &.selected {
+    background-color: $selectionStart;
+    color: $selectionTextColor;
+
+    &:hover {
+      background-color: darken($selectionStart, 20%);
+    }
+  }
 }
-
-

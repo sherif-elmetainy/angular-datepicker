@@ -1,3 +1,3 @@
 <select [(ngModel)]="value" #timepickerSelect [class.popup]="isPopup">
-  <option *ngFor="let timeOpt of timeOptions" [ngValue]="timeOpt.val"> {{ timeOpt.date | gtime }}</option>
+  <option *ngFor="let timeOpt of timeOptions" [ngValue]="timeOpt.val"> {{ timeOpt.date | gtime:effectiveLocale }}</option>
 </select>
