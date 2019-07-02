@@ -1,4 +1,4 @@
-import { OnDestroy, HostListener, ChangeDetectorRef, ViewChild, TemplateRef } from '@angular/core';
+import { OnDestroy, HostListener, ChangeDetectorRef } from '@angular/core';
 import { CurrentCultureService, TypeConverterService, GlobalizationService } from '@code-art/angular-globalize';
 import { startOfToday, isWithinRange, addDays } from 'date-fns';
 
@@ -28,7 +28,6 @@ export abstract class BaseDatePickerComponent extends BaseDatePickerAccessor<IDa
   public yearFormatter!: (n: number) => string;
   public monthPickerVisible = false;
   public yearPickerVisible = false;
-  @ViewChild('monthTemplate', { static: true }) public monthTemplate?: TemplateRef<number>;
 
   private _calculated: boolean;
   private _weekStart: number;

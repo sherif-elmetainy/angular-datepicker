@@ -119,10 +119,10 @@ export class SelectionScrollComponent implements OnInit, OnChanges, AfterViewIni
       }
       div.innerText = this.formatter(i + this.minValue);
     }
-    for (let i = ms + 1; i < this.displayArray.length; i++) {
-      this.renderer.removeChild(this.optionsContainer.nativeElement, this.displayArray[i]);
+    for (let j = ms; j < this.displayArray.length; j++) {
+      this.renderer.removeChild(this.optionsContainer.nativeElement, this.displayArray[j]);
     }
-    if (this.displayArray.length > ms + 1) {
+    if (this.displayArray.length > ms) {
       this.displayArray.splice(ms, this.displayArray.length - ms);
     }
   }

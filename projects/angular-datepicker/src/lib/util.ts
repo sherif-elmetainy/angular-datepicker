@@ -90,7 +90,6 @@ export interface IMonthYearSelection {
 
 export const sevenArray = numArray(7);
 export const sixArray = numArray(6);
-export const twelveArray = numArray(12);
 
 export enum KEY_CODE {
   RIGHT_ARROW = 'ArrowRight',

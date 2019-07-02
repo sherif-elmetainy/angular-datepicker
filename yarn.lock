@@ -308,10 +308,10 @@
   dependencies:
     tslib "^1.9.0"
 
-"@code-art/rx-helpers@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@code-art/rx-helpers/-/rx-helpers-1.3.0.tgz#62062d03ec20b78c5446867e74500cdc7f407c4e"
-  integrity sha512-e/LrG0XiuWnU6DwjlelwxPCsKdfgDDOrvdLhTR4VbCWuaY8h39HXuyvdtduT9cDAIsh9AYU2siXHIVVtAedM3A==
+"@code-art/rx-helpers@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@code-art/rx-helpers/-/rx-helpers-8.0.0.tgz#64c1b2e2969c74ad078db5394cde8e137ef5c01e"
+  integrity sha512-Pa/5Hgfb+7rRxSx7ofmohhnpy4foyRAfX6Z5Aeby3Tf63MNpWqbKT47pusrcfeKUiP0TvOwwkkqBijQFBJCrwQ==
   dependencies:
     tslib "^1.9.0"
 

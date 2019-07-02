@@ -2,7 +2,7 @@
 import {
   formatYear, getMonthYear,
   isPlainObject, numArray,
-  sevenArray, sixArray, twelveArray
+  sevenArray, sixArray
 } from './util';
 import { initComponentTest } from '../test/init-test-env';
 import { GlobalizationService } from '@code-art/angular-globalize';
@@ -83,11 +83,9 @@ describe('Util numArray', () => {
   it('built in correct lengths', () => {
     expect(Array.isArray(sevenArray)).toBe(true);
     expect(Array.isArray(sixArray)).toBe(true);
-    expect(Array.isArray(twelveArray)).toBe(true);
 
     expect(sevenArray.length).toBe(7);
     expect(sixArray.length).toBe(6);
-    expect(twelveArray.length).toBe(12);
   });
 });
 
