@@ -1,17 +1,14 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { initComponentTest } from 'projects/angular-datepicker/src/test/init-test-env';
-import { NextPreviousComponent } from '../next-prev/next-prev.component';
-import { DaysViewComponent } from '../days-view/days-view.component';
-import { YearsViewComponent } from '../years-view/years-view.component';
-import { MonthsViewComponent } from '../months-view/months-view.component';
 import { DateRangePickerComponent } from './date-range-picker.component';
+import { SelectionScrollComponent } from '../selection-scroll/selection-scroll.component';
 
 
 describe('DateRangePickerComponent', () => {
   let fixture: ComponentFixture<DateRangePickerComponent>;
   let component: DateRangePickerComponent;
   beforeEach(async () => {
-    initComponentTest(NextPreviousComponent, YearsViewComponent, MonthsViewComponent, DaysViewComponent, DateRangePickerComponent);
+    initComponentTest(DateRangePickerComponent, SelectionScrollComponent);
     fixture = TestBed.createComponent(DateRangePickerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
