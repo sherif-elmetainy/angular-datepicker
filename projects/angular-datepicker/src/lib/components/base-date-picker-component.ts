@@ -1,4 +1,4 @@
-import { OnDestroy, HostListener, ChangeDetectorRef } from '@angular/core';
+import { OnDestroy, HostListener, ChangeDetectorRef, Injectable } from '@angular/core';
 import { CurrentCultureService, TypeConverterService, GlobalizationService } from '@code-art/angular-globalize';
 import { startOfToday, isWithinRange, addDays } from 'date-fns';
 
@@ -15,6 +15,7 @@ import {
 } from '../util';
 import { takeUntilDestroyed } from '@code-art/rx-helpers';
 
+@Injectable()
 export abstract class BaseDatePickerComponent extends BaseDatePickerAccessor<IDatePicker> implements OnDestroy {
 
   public view: ViewType = 'days';
