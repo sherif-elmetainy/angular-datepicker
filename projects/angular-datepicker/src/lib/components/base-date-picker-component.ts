@@ -45,12 +45,12 @@ export abstract class BaseDatePickerComponent extends BaseDatePickerAccessor<IDa
     globalizationService: GlobalizationService,
   ) {
     super(cultureService, converterService, changeDetector);
-    const date = startOfToday();
-    this.month = date.getMonth();
-    this.year = date.getFullYear();
     this._weekStart = 0;
     this._calculated = false;
     this._focusDate = null;
+    this.valueChange
+      .pipe(takeUntilDestroyed(this))
+      .subscribe(() => this._calculated = false);
     this.cultureService.cultureObservable
     .pipe(takeUntilDestroyed(this))
     .subscribe((_) => {

@@ -20,4 +20,10 @@ describe('DateTimePickerComponent', () => {
   it('inits correctly', () => {
     expect(component).toBeTruthy();
   });
+
+  it('handles dates correctly', () => {
+    const date = new Date(2019, 9, 28, 21, 0, 0);
+    component.value = date;
+    expect(component.timeValue).toBe(21 * 3600_000);
+  });
 });
