@@ -80,7 +80,12 @@ export class DateTimePickerComponent
       if (dateValue === null) {
         dateValue = startOfToday();
       }
-      dateValue = new Date(dateValue.getTime() + val);
+      dateValue = new Date(dateValue.valueOf());
+      const tempValue = new Date(new Date(2000, 0, 1).valueOf() + val);
+      dateValue.setHours(tempValue.getHours());
+      dateValue.setMinutes(tempValue.getMinutes());
+      dateValue.setSeconds(tempValue.getSeconds());
+      dateValue.setMilliseconds(tempValue.getMilliseconds());
       this.value = dateValue;
     }
   }
@@ -88,7 +93,7 @@ export class DateTimePickerComponent
   public get timeValue(): number | null {
     const d = this.value;
     if (d instanceof Date) {
-      return ((d.getHours() * 60 + d.getMinutes()) * 60 + d.getSeconds()) * 1000;
+      return ((d.getHours() * 60 + d.getMinutes()) * 60 + d.getSeconds()) * 1000 + d.getMilliseconds();
     }
     return null;
   }
