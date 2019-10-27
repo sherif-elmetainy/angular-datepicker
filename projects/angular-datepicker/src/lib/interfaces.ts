@@ -6,6 +6,7 @@ import {
 import { ControlValueAccessor } from '@angular/forms';
 
 import { CurrentCultureService } from '@code-art/angular-globalize';
+import { IShowDateTimePickerTime } from './util';
 
 export interface ICompositeObject<T> {
   parent?: IBaseValueAccessor<T> & T;
@@ -72,6 +73,7 @@ export interface IDatePicker extends IDateRangeOptions {
   todayHighlight: boolean;
   todayDate: Date;
   highlightDays: number;
+  weekStart: number;
 }
 
 export interface ITimePickerOptions {
@@ -88,5 +90,5 @@ export interface ITimePicker extends ITimePickerOptions, ITimePickerMaxMinValues
 }
 
 export interface IDateTimePicker extends IDatePicker, ITimePickerOptions {
-
+  showTime: EventEmitter<IShowDateTimePickerTime>;
 }

@@ -48,7 +48,7 @@
 
       <div class="col-sm-6 col-12">
           <h4>Date Component</h4>
-          <cadp-datepicker [highlightDays]="65" [(ngModel)]="vald"></cadp-datepicker>
+          <cadp-datepicker [highlightDays]="65" [(ngModel)]="vald" [weekStart]="1"></cadp-datepicker>
           <div>
               Value: {{ vald | json }}
               <br/>
@@ -67,7 +67,7 @@
       </div>
       <div class="col-sm-6 col-12">
           <h4>Date Directive</h4>
-          <input class='form-control' cadpDatePicker [(ngModel)]="valp" title="date"/>
+          <input class='form-control' cadpDatePicker [(ngModel)]="valp" title="date" [weekStart]="1"/>
           <div>
               Value: {{ valp | json }}
               <br/>
@@ -78,7 +78,7 @@
   <div class="row">
       <div class="col-sm-6 col-12">
           <h4>Date Time Component</h4>
-          <cadp-datetimepicker [highlightDays]="65" [(ngModel)]="vald"></cadp-datetimepicker>
+          <cadp-datetimepicker [highlightDays]="65" (showTime)="showTime($event)" [weekStart]="2"></cadp-datetimepicker>
           <div>
               Value: {{ vald | json }}
               <br/>
@@ -87,7 +87,7 @@
 
       <div class="col-sm-6 col-12">
           <h4>Date Time Component</h4>
-          <cadp-datetimepicker [highlightDays]="65" [(ngModel)]="vald"></cadp-datetimepicker>
+          <cadp-datetimepicker [highlightDays]="65" [(ngModel)]="vald" [weekStart]="2"></cadp-datetimepicker>
           <div>
               Value: {{ vald | json }}
               <br/>
@@ -97,7 +97,7 @@
   <div class="row">
       <div class="col-sm-6 col-12">
           <h4>Date time Directive</h4>
-          <input class='form-control' cadpDateTimePicker [(ngModel)]="vald" title="datetime"/>
+          <input class='form-control' cadpDateTimePicker [(ngModel)]="valdd" [weekStart]="2" (showTime)="showTime($event)" title="datetime"/>
           <div>
               Value: {{ vald | json }}
               <br/>
@@ -105,7 +105,7 @@
       </div>
       <div class="col-sm-6 col-12">
           <h4>Date time Directive</h4>
-          <input class='form-control' cadpDateTimePicker [(ngModel)]="vald" title="datetime"/>
+          <input class='form-control' cadpDateTimePicker [(ngModel)]="vald" [weekStart]="1" title="datetime"/>
           <div>
               Value: {{ vald | json }}
               <br/>

@@ -12,6 +12,7 @@ import {
   Renderer2,
   HostListener,
 } from '@angular/core';
+import { IShowDateTimePickerTime } from '../../util';
 
 @Component({
   selector: 'cadp-selection-scroll',
@@ -26,6 +27,7 @@ export class SelectionScrollComponent implements OnInit, OnChanges, AfterViewIni
   @Input() public value: number | undefined;
   @Output() public valueChange = new EventEmitter<number>();
   @Output() public dismissed = new EventEmitter<boolean>();
+  @Output() public scrolling = new EventEmitter<IShowDateTimePickerTime>()
   @ViewChild('selectionContainer', { static: true }) public selectionContainer!: ElementRef<HTMLDivElement>;
   @ViewChild('optionsContainer', { static: true }) public optionsContainer!: ElementRef<HTMLDivElement>;
 
@@ -73,9 +75,15 @@ export class SelectionScrollComponent implements OnInit, OnChanges, AfterViewIni
     window.setTimeout(() => {
       const h1 = this.optionsContainer.nativeElement.offsetHeight;
       const h2 = this.selectionContainer.nativeElement.offsetHeight;
-      if (h1 > h2 && this.value !== null && this.value !== undefined) {
+      let val = this.value === undefined ? null : this.value;
+      const evt: IShowDateTimePickerTime = {
+        scrollToTime: val,
+      };
+      this.scrolling.emit(evt);
+      val = evt.scrollToTime;
+      if (h1 > h2 && val !== null && val !== undefined) {
         this.selectionContainer.nativeElement.scrollTop
-          = (h1 / this.maxSize) * (this.value - this.minValue) - h2 / 2;
+          = (h1 / this.maxSize) * (val - this.minValue) - h2 / 2;
       }
     }, 10);
   }

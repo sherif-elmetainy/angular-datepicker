@@ -1,6 +1,6 @@
 import {
   ChangeDetectorRef, ComponentFactory, ComponentFactoryResolver, Directive, ElementRef,
-  forwardRef, HostListener, Injector, Input, OnDestroy, OnInit, ViewContainerRef,
+  forwardRef, HostListener, Injector, Input, OnDestroy, OnInit, ViewContainerRef, Output, EventEmitter,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DateFormatterOptions } from 'globalize';
@@ -9,6 +9,8 @@ import { BaseDatePickerAccessor } from '../base-date-picker-accessor';
 import { DateTimePickerComponent } from '../components/datetime-picker/datetime-picker.component';
 import { IBaseValueAccessor, IDateTimePicker, IPopupDirective } from '../interfaces';
 import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art/angular-globalize';
+import { IShowDateTimePickerTime } from '../util';
+import { Subscription } from 'rxjs';
 
 @Directive({
   providers: [{
@@ -22,11 +24,14 @@ export class DateTimePickerDirective extends BaseDatePickerAccessor<IDateTimePic
 
   @HostListener('focus') public onFocus?: () => void;
   @HostListener('blur') public onBlur?: () => void;
+  @Output() public readonly showTime = new EventEmitter<IShowDateTimePickerTime>();
   @Input() public orientTop: boolean | undefined;
   @Input() public orientRight: boolean | undefined;
   @Input() public format!: string;
   @Input() public minutesStep = 15;
   public parent: (IBaseValueAccessor<IDateTimePicker> & IDateTimePicker) | undefined;
+
+  private _sub: Subscription|undefined;
   public initPopupDirective!: (resolver: ComponentFactoryResolver,
     viewContainerRef: ViewContainerRef,
     el: ElementRef,
@@ -52,6 +57,17 @@ export class DateTimePickerDirective extends BaseDatePickerAccessor<IDateTimePic
     return resolver.resolveComponentFactory(DateTimePickerComponent);
   }
 
+  public addBoundChild(child: IBaseValueAccessor<IDateTimePicker> & IDateTimePicker): void {
+    if (this._sub) {
+      this._sub.unsubscribe();
+      this._sub = undefined;
+    }
+    if (child && child.showTime) {
+      this._sub = child.showTime.subscribe((e: IShowDateTimePickerTime) => this.showTime.emit(e));
+    }
+    super.addBoundChild(child);
+  }
+
   public formatValue(val: any, locale: string, format: string): string {
     if (val === undefined || val === null) {
       return '';
@@ -67,7 +83,10 @@ export class DateTimePickerDirective extends BaseDatePickerAccessor<IDateTimePic
   }
 
   public ngOnDestroy(): void {
-    // Do nothing
+    if (this._sub) {
+      this._sub.unsubscribe();
+      this._sub = undefined;
+    }
   }
 
   private formatDate(val: Date, locale: string, format: string) {

@@ -12,6 +12,7 @@ export abstract class BaseDatePickerAccessor<T extends IDatePicker>
   private _todayHighlight = true;
   private _todayDate: Date | null = null;
   private _highlightDays = 0;
+  private _weekStart = 0;
 
   @Input() public set homeButton(val: boolean) {
     if (this.parent) {
@@ -115,5 +116,23 @@ export abstract class BaseDatePickerAccessor<T extends IDatePicker>
       return this.parent.highlightDays;
     }
     return this._highlightDays;
+  }
+
+  @Input() public set weekStart(val: number) {
+    if (this.parent) {
+      this.parent.weekStart = val;
+      return;
+    }
+    val = val || 0;
+    if (val !== this._weekStart) {
+      this._weekStart = val;
+    }
+  }
+
+  public get weekStart(): number {
+    if (this.parent) {
+      return this.parent.weekStart;
+    }
+    return this._weekStart;
   }
 }

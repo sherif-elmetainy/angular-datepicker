@@ -1,6 +1,6 @@
 import { OnDestroy, HostListener, ChangeDetectorRef, Injectable } from '@angular/core';
 import { CurrentCultureService, TypeConverterService, GlobalizationService } from '@code-art/angular-globalize';
-import { startOfToday, isWithinRange, addDays } from 'date-fns';
+import { isWithinRange, addDays } from 'date-fns';
 
 import { BaseDatePickerAccessor } from '../base-date-picker-accessor';
 import { IDatePicker } from '../interfaces';
@@ -31,7 +31,6 @@ export abstract class BaseDatePickerComponent extends BaseDatePickerAccessor<IDa
   public yearPickerVisible = false;
 
   private _calculated: boolean;
-  private _weekStart: number;
   private _viewStartDate!: Date;
   private _viewEndDate!: Date;
   private _startDate!: Date;
@@ -45,7 +44,6 @@ export abstract class BaseDatePickerComponent extends BaseDatePickerAccessor<IDa
     globalizationService: GlobalizationService,
   ) {
     super(cultureService, converterService, changeDetector);
-    this._weekStart = 0;
     this._calculated = false;
     this._focusDate = null;
     this.valueChange
@@ -198,11 +196,6 @@ export abstract class BaseDatePickerComponent extends BaseDatePickerAccessor<IDa
     return this._allDays;
   }
 
-  public get weekStart(): number {
-    this.calculate();
-    return this._weekStart;
-  }
-
   public set month(val: number) {
     if (typeof val === 'number') {
       const [m, y] = getMonthYear(val, this.year);
@@ -312,7 +305,7 @@ export abstract class BaseDatePickerComponent extends BaseDatePickerAccessor<IDa
   private calculate() {
     if (!this._calculated) {
       this._startDate = new Date(this.year, this.month, 1);
-      const diff = (this._startDate.getDay() - this._weekStart + 7) % 7;
+      const diff = (this._startDate.getDay() - this.weekStart + 7) % 7;
       if (diff === 0) {
         this._viewStartDate = this._startDate;
       } else {

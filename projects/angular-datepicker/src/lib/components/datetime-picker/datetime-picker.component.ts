@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, forwardRef, Input, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Component, forwardRef, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CurrentCultureService, TypeConverterService, GlobalizationService } from '@code-art/angular-globalize';
 
@@ -6,7 +6,7 @@ import { BaseDatePickerAccessor } from '../../base-date-picker-accessor';
 import { IDateTimePicker } from '../../interfaces';
 import { startOfToday } from 'date-fns';
 import { takeUntilDestroyed } from '@code-art/rx-helpers';
-import { formatTimeComponent } from '../../util';
+import { IShowDateTimePickerTime } from '../../util';
 
 @Component({
   providers: [{
@@ -21,6 +21,7 @@ export class DateTimePickerComponent
   extends BaseDatePickerAccessor<IDateTimePicker> implements OnDestroy, IDateTimePicker {
 
   @Input() public minutesStep: number;
+  @Output() public readonly showTime = new EventEmitter<IShowDateTimePickerTime>();
 
   public timeFormatter!: (v: number) => string;
   public time = false;
@@ -99,23 +100,39 @@ export class DateTimePickerComponent
   }
 
   public get timeSelectionValue(): number | null {
-    if (this.timeValue === null) {
-      return null;
-    } else {
-      const v = this.timeValue / (this.minutesStep * 60_000);
-      if (Math.round(v) !== v) {
-        return null;
-      }
-      return v;
-    }
+    return this.timeToSelection(this.timeValue);
   }
 
   public set timeSelectionValue(val: number | null) {
-    if (val === null) {
-      this.timeValue = null;
+    this.timeValue = this.selectionToTime(val);
+  }
+
+  public onTimeScrolling($event: IShowDateTimePickerTime): void {
+    let v = this.selectionToTime($event.scrollToTime);
+    const evt: IShowDateTimePickerTime = {
+      scrollToTime: v,
+    };
+    this.showTime.emit(evt);
+    $event.scrollToTime = this.timeToSelection(evt.scrollToTime);
+  }
+
+  private selectionToTime(v: number|null): number|null {
+    if (v === null) {
+      return null;
     } else {
-      this.timeValue = val * this.minutesStep * 60_000;
+      return v * this.minutesStep * 60_000;
     }
+  }
+
+  private timeToSelection(v: number | null): number | null {
+    if (v === null) {
+      return null;
+    }
+    const t = v / (this.minutesStep * 60_000);
+      if (Math.round(t) !== t) {
+        return null;
+      }
+      return t;
   }
 }
 

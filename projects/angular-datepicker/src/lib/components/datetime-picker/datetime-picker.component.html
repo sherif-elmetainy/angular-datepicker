@@ -1,12 +1,12 @@
 <div glbDirection class="datetime-picker">
   <div>
     <div class="date-container">
-      <cadp-datepicker [(value)]="dateValue"></cadp-datepicker>
+      <cadp-datepicker [(value)]="dateValue" [weekStart]="weekStart"></cadp-datepicker>
     </div>
     <div class="spacer"></div>
     <div class="time-container">
       <cadp-selection-scroll [minValue]="0" [maxValue]="24 * 60 / minutesStep - 1" [(value)]="timeSelectionValue"
-        [formatter]="timeFormatter" #timeSelect></cadp-selection-scroll>
+        [formatter]="timeFormatter" #timeSelect (scrolling)="onTimeScrolling($event)"></cadp-selection-scroll>
     </div>
   </div>
 </div>
