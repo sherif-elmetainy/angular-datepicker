@@ -1,10 +1,11 @@
-import { BaseDateRangeAccessor } from './base-date-range-accessor';
+import { BaseDateRangeAccessorDirective } from './base-date-range-accessor-directive';
 import { IDatePicker } from './interfaces';
-import { Input } from '@angular/core';
+import { Input, Directive } from '@angular/core';
 import { startOfToday } from 'date-fns';
 
-export abstract class BaseDatePickerAccessor<T extends IDatePicker>
-  extends BaseDateRangeAccessor<T> implements IDatePicker {
+@Directive()
+export abstract class BaseDatePickerAccessorDirective<T extends IDatePicker>
+  extends BaseDateRangeAccessorDirective<T> implements IDatePicker {
 
   private _homeButton = true;
   private _resetButton = true;

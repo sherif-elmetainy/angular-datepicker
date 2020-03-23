@@ -1,15 +1,16 @@
 import {
   ComponentFactory, ComponentFactoryResolver, ComponentRef,
-  ElementRef, EventEmitter, Injector, OnDestroy, OnInit, ViewContainerRef, Injectable,
+  ElementRef, EventEmitter, Injector, ViewContainerRef,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CurrentCultureService } from '@code-art/angular-globalize';
-import { combineLatest, Observable, Subscription, BehaviorSubject } from 'rxjs';
+import { combineLatest, Observable, BehaviorSubject } from 'rxjs';
 import { PopupComponent } from '../components/popup/popup.component';
-import { IBaseValueAccessor, IPopupComponent, IPopupDirective } from '../interfaces';
-import { takeUntilDestroyed } from '@code-art/rx-helpers';
+import { IBaseValueAccessor, IPopupComponent, IPopupDirective, IPopupEvents } from '../interfaces';
+import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art/rx-helpers';
 
-export abstract class PopupDirective<T> implements OnInit, OnDestroy, IPopupDirective<T> {
+@TakeUntilDestroyed()
+export abstract class PopupImplentation<T> implements IPopupDirective<T>, IPopupEvents {
   public parent?: IBaseValueAccessor<T> & T;
   public value: any;
   public valueChange!: EventEmitter<any>;
@@ -77,13 +78,13 @@ export abstract class PopupDirective<T> implements OnInit, OnDestroy, IPopupDire
     }
   }
 
-  public ngOnInit(): void {
+  public popupOnInit(): void {
     this.destroyInternal();
     this.selectAccessor();
     this.createComponent();
   }
 
-  public ngOnDestroy(): void {
+  public popupOnDestroy(): void {
     this.destroyInternal();
   }
 

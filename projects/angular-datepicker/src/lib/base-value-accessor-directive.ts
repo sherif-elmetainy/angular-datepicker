@@ -1,11 +1,13 @@
-import { ChangeDetectorRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { ChangeDetectorRef, EventEmitter, Input, OnDestroy, Output, Directive } from '@angular/core';
 import { combineLatest, Subscription, BehaviorSubject } from 'rxjs';
 
-import { takeUntilDestroyed } from '@code-art/rx-helpers';
+import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art/rx-helpers';
 import { CurrentCultureService } from '@code-art/angular-globalize';
 import { IBaseValueAccessor, ICompositeObject } from './interfaces';
 
-export abstract class BaseValueAccessor<T> implements OnDestroy, IBaseValueAccessor<T>, ICompositeObject<T> {
+@TakeUntilDestroyed()
+@Directive()
+export abstract class BaseValueAccessorDirective<T> implements OnDestroy, IBaseValueAccessor<T>, ICompositeObject<T> {
   @Output() public readonly valueChange: EventEmitter<any> = new EventEmitter<any>();
 
   private readonly _boundChildren: Array<IBaseValueAccessor<T> & T> = [];

@@ -1,7 +1,7 @@
 import { Component, forwardRef, OnDestroy } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { BaseDatePickerComponent } from '../base-date-picker-component';
+import { BaseDatePickerComponentDirective } from '../base-date-picker-component-directive';
 
 @Component({
   providers: [{
@@ -12,6 +12,6 @@ import { BaseDatePickerComponent } from '../base-date-picker-component';
   styleUrls: ['./date-picker.component.scss'],
   templateUrl: './date-picker.component.html',
 })
-export class DatePickerComponent extends BaseDatePickerComponent implements OnDestroy {
+export class DatePickerComponent extends BaseDatePickerComponentDirective implements OnDestroy {
   public rangeSelection = false;
 }

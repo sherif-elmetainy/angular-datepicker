@@ -8,13 +8,12 @@ import { AngularGlobalizeModule, CANG_SUPPORTED_CULTURES } from '@code-art/angul
 import { AppComponent } from './app.component';
 
 import { AngularDatepickerModule } from '@code-art/angular-datepicker';
-import { loadGlobalizeData } from 'projects/angular-datepicker/src/test/globalize-data-loader';
 import { LanguageSwitchComponent } from './components/language-switch/language-switch.component';
 
-import 'globalize/currency';
-import 'globalize/date';
-import 'globalize/number';
-import 'globalize/plural';
+import { GlobalizeDataEnGBModule } from './globalize-data/globalize-data-en-gb.module';
+import { GlobalizeDataDeModule } from './globalize-data/globalize-data-de.module';
+import { GlobalizeDataArEGModule } from './globalize-data/globalize-data-ar-eg.module';
+import { GlobalizeDataModule } from './globalize-data/globalize-data.module';
 
 @NgModule({
   declarations: [
@@ -27,16 +26,13 @@ import 'globalize/plural';
     FormsModule,
     AngularGlobalizeModule,
     AngularDatepickerModule,
-    AngularGlobalizeModule.forRoot(),
-  ],
-  providers: [
-    { provide: CANG_SUPPORTED_CULTURES, useValue: ['en-GB', 'de', 'ar-EG'] },
+    AngularGlobalizeModule.forRoot(['en-GB', 'de', 'ar-EG']),
+    GlobalizeDataEnGBModule,
+    GlobalizeDataDeModule,
+    GlobalizeDataArEGModule,
+    GlobalizeDataModule,
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
-  constructor() {
-    loadGlobalizeData();
-  }
 }

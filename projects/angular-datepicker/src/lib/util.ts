@@ -1,6 +1,5 @@
 import { GlobalizationService } from '@code-art/angular-globalize';
 
-// tslint:disable-next-line: ban-types
 export function applyMixins(derivedCtor: Function, ...baseCtors: Function[]) {
   baseCtors.forEach((baseCtor) => {
     Object.getOwnPropertyNames(baseCtor.prototype).forEach((name) => {

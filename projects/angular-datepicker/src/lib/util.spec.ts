@@ -43,7 +43,7 @@ describe('Util formatYear', () => {
   let service: GlobalizationService;
   beforeEach(async () => {
     await initComponentTest();
-    service = TestBed.get(GlobalizationService);
+    service = TestBed.inject(GlobalizationService);
   });
 
   it('formats latin', () => {

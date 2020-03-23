@@ -1,13 +1,14 @@
-import { ChangeDetectorRef, Inject, Input } from '@angular/core';
+import { ChangeDetectorRef, Inject, Input, Directive } from '@angular/core';
 import { CurrentCultureService, TypeConverterService } from '@code-art/angular-globalize';
 
-import { BaseValueAccessor } from './base-value-accessor';
+import { BaseValueAccessorDirective } from './base-value-accessor-directive';
 import { IDateRangeOptions } from './interfaces';
 import { isPlainObject } from './util';
 import { isEqual } from 'date-fns';
 
-export abstract class BaseDateRangeAccessor<T extends IDateRangeOptions>
-  extends BaseValueAccessor<T> implements IDateRangeOptions {
+@Directive()
+export abstract class BaseDateRangeAccessorDirective<T extends IDateRangeOptions>
+  extends BaseValueAccessorDirective<T> implements IDateRangeOptions {
 
   private static readonly maximumYear = 2100;
   private static readonly minimumYear = 1900;
@@ -23,8 +24,8 @@ export abstract class BaseDateRangeAccessor<T extends IDateRangeOptions>
     protected readonly converterService: TypeConverterService,
     @Inject(ChangeDetectorRef) changeDetector: ChangeDetectorRef) {
     super(cultureService, changeDetector);
-    this.defaultMinDate = new Date(BaseDateRangeAccessor.minimumYear, 0, 1);
-    this.defaultMaxDate = new Date(BaseDateRangeAccessor.maximumYear, 11, 31);
+    this.defaultMinDate = new Date(BaseDateRangeAccessorDirective.minimumYear, 0, 1);
+    this.defaultMaxDate = new Date(BaseDateRangeAccessorDirective.maximumYear, 11, 31);
   }
 
   public set rangeSelection(val: boolean) {

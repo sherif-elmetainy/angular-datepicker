@@ -2,12 +2,13 @@ import { ChangeDetectorRef, Component, forwardRef, Input, OnDestroy, Output, Eve
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CurrentCultureService, TypeConverterService, GlobalizationService } from '@code-art/angular-globalize';
 
-import { BaseDatePickerAccessor } from '../../base-date-picker-accessor';
+import { BaseDatePickerAccessorDirective } from '../../base-date-picker-accessor-directive';
 import { IDateTimePicker } from '../../interfaces';
 import { startOfToday } from 'date-fns';
-import { takeUntilDestroyed } from '@code-art/rx-helpers';
+import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art/rx-helpers';
 import { IShowDateTimePickerTime } from '../../util';
 
+@TakeUntilDestroyed()
 @Component({
   providers: [{
     multi: true,
@@ -18,7 +19,7 @@ import { IShowDateTimePickerTime } from '../../util';
   templateUrl: './datetime-picker.component.html',
 })
 export class DateTimePickerComponent
-  extends BaseDatePickerAccessor<IDateTimePicker> implements OnDestroy, IDateTimePicker {
+  extends BaseDatePickerAccessorDirective<IDateTimePicker> implements OnDestroy, IDateTimePicker {
 
   @Input() public minutesStep: number;
   @Output() public readonly showTime = new EventEmitter<IShowDateTimePickerTime>();
@@ -108,7 +109,7 @@ export class DateTimePickerComponent
   }
 
   public onTimeScrolling($event: IShowDateTimePickerTime): void {
-    let v = this.selectionToTime($event.scrollToTime);
+    const v = this.selectionToTime($event.scrollToTime);
     const evt: IShowDateTimePickerTime = {
       scrollToTime: v,
     };

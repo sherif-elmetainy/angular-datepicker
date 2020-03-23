@@ -27,7 +27,7 @@ export class SelectionScrollComponent implements OnInit, OnChanges, AfterViewIni
   @Input() public value: number | undefined;
   @Output() public valueChange = new EventEmitter<number>();
   @Output() public dismissed = new EventEmitter<boolean>();
-  @Output() public scrolling = new EventEmitter<IShowDateTimePickerTime>()
+  @Output() public scrolling = new EventEmitter<IShowDateTimePickerTime>();
   @ViewChild('selectionContainer', { static: true }) public selectionContainer!: ElementRef<HTMLDivElement>;
   @ViewChild('optionsContainer', { static: true }) public optionsContainer!: ElementRef<HTMLDivElement>;
 

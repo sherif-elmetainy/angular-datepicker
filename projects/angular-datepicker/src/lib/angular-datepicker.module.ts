@@ -14,7 +14,7 @@ import { DatePickerDirective } from './directives/date-picker.directive';
 import { DateRangePickerDirective } from './directives/date-range-picker.directive';
 import { DateTimePickerDirective } from './directives/datetime-picker.directive';
 import { TimePickerDirective } from './directives/time-picker.directive';
-import { PopupDirective } from './directives/popup.directive';
+import { PopupImplentation } from './directives/popup-implementation';
 import { applyMixins } from './util';
 import { BaseDatePickerDirective } from './directives/base-date-picker-directive';
 import { SelectionScrollComponent } from './components/selection-scroll/selection-scroll.component';
@@ -58,8 +58,5 @@ import { SelectionScrollComponent } from './components/selection-scroll/selectio
 })
 export class AngularDatepickerModule {
   constructor() {
-    applyMixins(TimePickerDirective, PopupDirective);
-    applyMixins(BaseDatePickerDirective, PopupDirective);
-    applyMixins(DateTimePickerDirective, PopupDirective);
   }
 }

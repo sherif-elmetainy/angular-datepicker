@@ -1,17 +1,18 @@
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art/angular-globalize';
+import { DateFormatterOptions } from 'globalize';
+import { Subscription } from 'rxjs';
+import { BaseDatePickerAccessorDirective } from '../base-date-picker-accessor-directive';
+import { DateTimePickerComponent } from '../components/datetime-picker/datetime-picker.component';
+import { IBaseValueAccessor, IDateTimePicker, IPopupDirective } from '../interfaces';
+import { IShowDateTimePickerTime } from '../util';
+import { Popup } from './popup';
 import {
   ChangeDetectorRef, ComponentFactory, ComponentFactoryResolver, Directive, ElementRef,
   forwardRef, HostListener, Injector, Input, OnDestroy, OnInit, ViewContainerRef, Output, EventEmitter,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DateFormatterOptions } from 'globalize';
 
-import { BaseDatePickerAccessor } from '../base-date-picker-accessor';
-import { DateTimePickerComponent } from '../components/datetime-picker/datetime-picker.component';
-import { IBaseValueAccessor, IDateTimePicker, IPopupDirective } from '../interfaces';
-import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art/angular-globalize';
-import { IShowDateTimePickerTime } from '../util';
-import { Subscription } from 'rxjs';
-
+@Popup()
 @Directive({
   providers: [{
     multi: true,
@@ -19,7 +20,7 @@ import { Subscription } from 'rxjs';
   }],
   selector: '[cadpDateTimePicker]',
 })
-export class DateTimePickerDirective extends BaseDatePickerAccessor<IDateTimePicker>
+export class DateTimePickerDirective extends BaseDatePickerAccessorDirective<IDateTimePicker>
   implements IPopupDirective<IDateTimePicker>, IDateTimePicker, OnInit, OnDestroy {
 
   @HostListener('focus') public onFocus?: () => void;

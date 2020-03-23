@@ -33,7 +33,7 @@ describe('LanguageSwitchComponent', () => {
 
   it('should create a button for each culture', async () => {
     const nodes = fixture.debugElement.queryAll(By.css('button'));
-    const cultureService: CurrentCultureService = TestBed.get(CurrentCultureService);
+    const cultureService: CurrentCultureService = TestBed.inject(CurrentCultureService);
     for (let i = 0; i < nodes.length; i++) {
       const node = nodes[i];
       const button = node.nativeElement as HTMLButtonElement;

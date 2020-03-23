@@ -5,11 +5,13 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DateFormatterOptions } from 'globalize';
 
-import { BaseTimeValueAccessor } from '../base-time-value-accessor';
+import { BaseTimeValueAccessorDirective } from '../base-time-value-accessor-directive';
 import { TimePickerComponent } from '../components/time-picker/time-picker.component';
 import { IPopupDirective, ITimePicker } from '../interfaces';
 import { CurrentCultureService, GlobalizationService } from '@code-art/angular-globalize';
+import { Popup } from './popup';
 
+@Popup()
 @Directive({
   providers: [{
     multi: true,
@@ -17,7 +19,7 @@ import { CurrentCultureService, GlobalizationService } from '@code-art/angular-g
   }],
   selector: '[cadpTimePicker]',
 })
-export class TimePickerDirective extends BaseTimeValueAccessor
+export class TimePickerDirective extends BaseTimeValueAccessorDirective
   implements IPopupDirective<ITimePicker>, ITimePicker, OnInit, OnDestroy {
 
   @HostListener('focus') public onFocus?: () => void;

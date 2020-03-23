@@ -1,8 +1,8 @@
-import { OnDestroy, HostListener, ChangeDetectorRef, Injectable } from '@angular/core';
+import { OnDestroy, HostListener, ChangeDetectorRef, Injectable, Directive } from '@angular/core';
 import { CurrentCultureService, TypeConverterService, GlobalizationService } from '@code-art/angular-globalize';
 import { isWithinRange, addDays } from 'date-fns';
 
-import { BaseDatePickerAccessor } from '../base-date-picker-accessor';
+import { BaseDatePickerAccessorDirective } from '../base-date-picker-accessor-directive';
 import { IDatePicker } from '../interfaces';
 import {
   getMonthYear,
@@ -13,10 +13,11 @@ import {
   KEY_CODE,
   formatYear,
 } from '../util';
-import { takeUntilDestroyed } from '@code-art/rx-helpers';
+import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art/rx-helpers';
 
-@Injectable()
-export abstract class BaseDatePickerComponent extends BaseDatePickerAccessor<IDatePicker> implements OnDestroy {
+@TakeUntilDestroyed()
+@Directive()
+export abstract class BaseDatePickerComponentDirective extends BaseDatePickerAccessorDirective<IDatePicker> implements OnDestroy {
 
   public view: ViewType = 'days';
   private _month?: number;

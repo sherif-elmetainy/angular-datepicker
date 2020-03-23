@@ -92,3 +92,8 @@ export interface ITimePicker extends ITimePickerOptions, ITimePickerMaxMinValues
 export interface IDateTimePicker extends IDatePicker, ITimePickerOptions {
   showTime: EventEmitter<IShowDateTimePickerTime>;
 }
+
+export interface IPopupEvents {
+  popupOnInit(): void;
+  popupOnDestroy(): void;
+}

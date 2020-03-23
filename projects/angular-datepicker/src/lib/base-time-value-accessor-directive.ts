@@ -1,8 +1,8 @@
-import { ChangeDetectorRef, Inject, Input } from '@angular/core';
+import { ChangeDetectorRef, Inject, Input, Directive } from '@angular/core';
 import { DateFormatterOptions } from 'globalize';
 import { CurrentCultureService, GlobalizationService } from '@code-art/angular-globalize';
 
-import { BaseValueAccessor } from './base-value-accessor';
+import { BaseValueAccessorDirective } from './base-value-accessor-directive';
 import { ITimePicker } from './interfaces';
 
 interface TimeOption {
@@ -10,15 +10,16 @@ interface TimeOption {
   date: Date;
 }
 
-export abstract class BaseTimeValueAccessor extends BaseValueAccessor<ITimePicker> implements ITimePicker {
+@Directive()
+export abstract class BaseTimeValueAccessorDirective extends BaseValueAccessorDirective<ITimePicker> implements ITimePicker {
   private static readonly maximumValue = 24 * 3600 * 1000 - 1;
   private static readonly minimumValue = 0;
   private static readonly formats: DateFormatterOptions[] =
     [{ time: 'short' }, { time: 'medium' }, { time: 'long' }, { time: 'full' }];
 
   public timeOptions!: TimeOption[];
-  private _minTime: number = BaseTimeValueAccessor.minimumValue;
-  private _maxTime: number = BaseTimeValueAccessor.maximumValue;
+  private _minTime: number = BaseTimeValueAccessorDirective.minimumValue;
+  private _maxTime: number = BaseTimeValueAccessorDirective.maximumValue;
   private _minutesStep = 15;
 
   constructor(cultureService: CurrentCultureService,
@@ -62,7 +63,7 @@ export abstract class BaseTimeValueAccessor extends BaseValueAccessor<ITimePicke
     if (this.parent) {
       return this.parent.minTime;
     }
-    return this._minTime || BaseTimeValueAccessor.minimumValue;
+    return this._minTime || BaseTimeValueAccessorDirective.minimumValue;
   }
 
   @Input() set maxTime(val: number) {
@@ -81,18 +82,18 @@ export abstract class BaseTimeValueAccessor extends BaseValueAccessor<ITimePicke
     if (this.parent) {
       return this.parent.maxTime;
     }
-    return this._maxTime || BaseTimeValueAccessor.maximumValue;
+    return this._maxTime || BaseTimeValueAccessorDirective.maximumValue;
   }
 
   public coerceValue(val: any): any {
     let d: Date | null = null;
     if (typeof val === 'number') {
-      return Math.round(Math.min(BaseTimeValueAccessor.maximumValue,
-        Math.max(BaseTimeValueAccessor.minimumValue, val)));
+      return Math.round(Math.min(BaseTimeValueAccessorDirective.maximumValue,
+        Math.max(BaseTimeValueAccessorDirective.minimumValue, val)));
     } else if (typeof val === 'string') {
 
-      for (let i = 0; i < BaseTimeValueAccessor.formats.length; i++) {
-        d = this.globalizeService.parseDate(val, this.effectiveLocale, BaseTimeValueAccessor.formats[i]);
+      for (let i = 0; i < BaseTimeValueAccessorDirective.formats.length; i++) {
+        d = this.globalizeService.parseDate(val, this.effectiveLocale, BaseTimeValueAccessorDirective.formats[i]);
         if (d) {
           break;
         }

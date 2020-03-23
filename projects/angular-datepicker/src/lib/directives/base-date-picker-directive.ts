@@ -1,17 +1,26 @@
 import {
-  ChangeDetectorRef, ComponentFactory, ComponentFactoryResolver, ElementRef, HostListener, Injector,
-  Input, OnDestroy, OnInit, ViewContainerRef, Injectable,
-} from '@angular/core';
+  ChangeDetectorRef,
+  ComponentFactory,
+  ComponentFactoryResolver,
+  Directive,
+  ElementRef,
+  HostListener,
+  Injectable,
+  Injector,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewContainerRef
+  } from '@angular/core';
 import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art/angular-globalize';
 import { DateFormatterOptions } from 'globalize';
-
-import { BaseDatePickerAccessor } from '../base-date-picker-accessor';
-import { BaseDatePickerComponent } from '../components/base-date-picker-component';
+import { BaseDatePickerAccessorDirective } from '../base-date-picker-accessor-directive';
+import { BaseDatePickerComponentDirective } from '../components/base-date-picker-component-directive';
 import { IDatePicker, IPopupDirective } from '../interfaces';
 import { isPlainObject } from '../util';
 
-@Injectable()
-export abstract class BaseDatePickerDirective extends BaseDatePickerAccessor<IDatePicker>
+@Directive()
+export abstract class BaseDatePickerDirective extends BaseDatePickerAccessorDirective<IDatePicker>
   implements IPopupDirective<IDatePicker>, IDatePicker, OnInit, OnDestroy {
 
   @HostListener('focus') public onFocus?: () => void;
@@ -40,7 +49,7 @@ export abstract class BaseDatePickerDirective extends BaseDatePickerAccessor<IDa
     return 'short';
   }
 
-  public abstract resolveFactory(resolver: ComponentFactoryResolver): ComponentFactory<BaseDatePickerComponent>;
+  public abstract resolveFactory(resolver: ComponentFactoryResolver): ComponentFactory<BaseDatePickerComponentDirective>;
 
   public parseValue(val: any): any {
     if (typeof val !== 'string') {
