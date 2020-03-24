@@ -3,7 +3,7 @@
  */
 
 export * from './lib/angular-datepicker.module';
-export { IDateRange } from './lib/util';
+export { IDateRange, IShowDateTimePickerTime } from './lib/util';
 export * from './lib/components/date-picker/date-picker.component';
 export * from './lib/components/datetime-picker/datetime-picker.component';
 export * from './lib/components/date-picker/date-range-picker.component';
