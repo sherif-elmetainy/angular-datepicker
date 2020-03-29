@@ -3,8 +3,8 @@ import { IShowDateTimePickerTime } from 'projects/angular-datepicker/src/lib/uti
 
 @Component({
   selector: 'app-root',
+  styleUrls: ['./app.component.scss'],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   public valdr: any;

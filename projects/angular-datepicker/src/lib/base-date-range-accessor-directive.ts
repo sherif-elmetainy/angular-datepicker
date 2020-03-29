@@ -1,10 +1,10 @@
-import { ChangeDetectorRef, Inject, Input, Directive } from '@angular/core';
+import { ChangeDetectorRef, Directive, Inject, Input } from '@angular/core';
 import { CurrentCultureService, TypeConverterService } from '@code-art/angular-globalize';
 
+import { isEqual } from 'date-fns';
 import { BaseValueAccessorDirective } from './base-value-accessor-directive';
 import { IDateRangeOptions } from './interfaces';
 import { isPlainObject } from './util';
-import { isEqual } from 'date-fns';
 
 @Directive()
 export abstract class BaseDateRangeAccessorDirective<T extends IDateRangeOptions>
@@ -21,8 +21,8 @@ export abstract class BaseDateRangeAccessorDirective<T extends IDateRangeOptions
   private _maxDate: Date | null = null;
 
   constructor(cultureService: CurrentCultureService,
-    protected readonly converterService: TypeConverterService,
-    @Inject(ChangeDetectorRef) changeDetector: ChangeDetectorRef) {
+              protected readonly converterService: TypeConverterService,
+              @Inject(ChangeDetectorRef) changeDetector: ChangeDetectorRef) {
     super(cultureService, changeDetector);
     this.defaultMinDate = new Date(BaseDateRangeAccessorDirective.minimumYear, 0, 1);
     this.defaultMaxDate = new Date(BaseDateRangeAccessorDirective.maximumYear, 11, 31);

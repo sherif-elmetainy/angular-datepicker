@@ -1,8 +1,7 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { initComponentTest } from 'projects/angular-datepicker/src/test/init-test-env';
-import { DatePickerComponent } from './date-picker.component';
 import { SelectionScrollComponent } from '../selection-scroll/selection-scroll.component';
-
+import { DatePickerComponent } from './date-picker.component';
 
 describe('DatePickerComponent', () => {
   let fixture: ComponentFixture<DatePickerComponent>;

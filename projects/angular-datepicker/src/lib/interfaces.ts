@@ -44,7 +44,7 @@ export interface IPopupDirective<T> extends IBaseValueAccessor<T> {
     resolver: ComponentFactoryResolver,
     viewContainerRef: ViewContainerRef,
     el: ElementRef,
-    injector: Injector
+    injector: Injector,
   ): void;
 
   formatValue(val: any, locale: string, format: string): string;

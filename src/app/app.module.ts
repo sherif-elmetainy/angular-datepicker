@@ -1,24 +1,25 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
-import { AngularGlobalizeModule, CANG_SUPPORTED_CULTURES } from '@code-art/angular-globalize';
+import { AngularGlobalizeModule } from '@code-art/angular-globalize';
 
 import { AppComponent } from './app.component';
 
 import { AngularDatepickerModule } from '@code-art/angular-datepicker';
 import { LanguageSwitchComponent } from './components/language-switch/language-switch.component';
 
-import { GlobalizeDataEnGBModule } from './globalize-data/globalize-data-en-gb.module';
-import { GlobalizeDataDeModule } from './globalize-data/globalize-data-de.module';
 import { GlobalizeDataArEGModule } from './globalize-data/globalize-data-ar-eg.module';
+import { GlobalizeDataDeModule } from './globalize-data/globalize-data-de.module';
+import { GlobalizeDataEnGBModule } from './globalize-data/globalize-data-en-gb.module';
 import { GlobalizeDataModule } from './globalize-data/globalize-data.module';
 
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    LanguageSwitchComponent
+    LanguageSwitchComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,6 @@ import { GlobalizeDataModule } from './globalize-data/globalize-data.module';
     GlobalizeDataArEGModule,
     GlobalizeDataModule,
   ],
-  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

@@ -1,7 +1,6 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { initComponentTest } from 'projects/angular-datepicker/src/test/init-test-env';
 import { TimePickerComponent } from './time-picker.component';
-
 
 describe('DateRangePickerComponent', () => {
   let fixture: ComponentFixture<TimePickerComponent>;

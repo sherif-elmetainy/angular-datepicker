@@ -1,11 +1,11 @@
-import { ChangeDetectorRef, Component, forwardRef, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, OnDestroy, Output } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { CurrentCultureService, TypeConverterService, GlobalizationService } from '@code-art/angular-globalize';
+import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art/angular-globalize';
 
+import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art/rx-helpers';
+import { startOfToday } from 'date-fns';
 import { BaseDatePickerAccessorDirective } from '../../base-date-picker-accessor-directive';
 import { IDateTimePicker } from '../../interfaces';
-import { startOfToday } from 'date-fns';
-import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art/rx-helpers';
 import { IShowDateTimePickerTime } from '../../util';
 
 @TakeUntilDestroyed()
@@ -28,9 +28,9 @@ export class DateTimePickerComponent
   public time = false;
 
   constructor(cultureService: CurrentCultureService,
-    converterService: TypeConverterService,
-    changeDetector: ChangeDetectorRef,
-    globalizationService: GlobalizationService,
+              converterService: TypeConverterService,
+              changeDetector: ChangeDetectorRef,
+              globalizationService: GlobalizationService,
   ) {
     super(cultureService, converterService, changeDetector);
     this.minutesStep = 15;
@@ -130,11 +130,9 @@ export class DateTimePickerComponent
       return null;
     }
     const t = v / (this.minutesStep * 60_000);
-      if (Math.round(t) !== t) {
+    if (Math.round(t) !== t) {
         return null;
       }
-      return t;
+    return t;
   }
 }
-
-

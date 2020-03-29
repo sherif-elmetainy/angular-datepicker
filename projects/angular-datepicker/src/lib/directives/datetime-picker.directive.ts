@@ -1,3 +1,7 @@
+import {
+  ChangeDetectorRef, ComponentFactory, ComponentFactoryResolver, Directive, ElementRef,
+  EventEmitter, forwardRef, HostListener, Injector, Input, OnDestroy, OnInit, Output, ViewContainerRef,
+} from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art/angular-globalize';
 import { DateFormatterOptions } from 'globalize';
@@ -7,10 +11,6 @@ import { DateTimePickerComponent } from '../components/datetime-picker/datetime-
 import { IBaseValueAccessor, IDateTimePicker, IPopupDirective } from '../interfaces';
 import { IShowDateTimePickerTime } from '../util';
 import { Popup } from './popup';
-import {
-  ChangeDetectorRef, ComponentFactory, ComponentFactoryResolver, Directive, ElementRef,
-  forwardRef, HostListener, Injector, Input, OnDestroy, OnInit, ViewContainerRef, Output, EventEmitter,
-} from '@angular/core';
 
 @Popup()
 @Directive({
@@ -34,18 +34,18 @@ export class DateTimePickerDirective extends BaseDatePickerAccessorDirective<IDa
 
   private _sub: Subscription|undefined;
   public initPopupDirective!: (resolver: ComponentFactoryResolver,
-    viewContainerRef: ViewContainerRef,
-    el: ElementRef,
-    injector: Injector) => void;
+                               viewContainerRef: ViewContainerRef,
+                               el: ElementRef,
+                               injector: Injector) => void;
 
   constructor(resolver: ComponentFactoryResolver,
-    viewContainerRef: ViewContainerRef,
-    el: ElementRef,
-    injector: Injector,
-    cultureService: CurrentCultureService,
-    private readonly globalizationService: GlobalizationService,
-    changeDetector: ChangeDetectorRef,
-    converterService: TypeConverterService) {
+              viewContainerRef: ViewContainerRef,
+              el: ElementRef,
+              injector: Injector,
+              cultureService: CurrentCultureService,
+              private readonly globalizationService: GlobalizationService,
+              changeDetector: ChangeDetectorRef,
+              converterService: TypeConverterService) {
     super(cultureService, converterService, changeDetector);
     this.initPopupDirective(resolver, viewContainerRef, el, injector);
   }

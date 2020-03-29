@@ -1,10 +1,7 @@
-import { ICON_COMPONENTS } from '.';
 import { TestBed } from '@angular/core/testing';
+import { ICON_COMPONENTS } from '.';
 
-
-for (let i = 0; i < ICON_COMPONENTS.length; i++) {
-    const type = ICON_COMPONENTS[i];
-
+for (const type of ICON_COMPONENTS) {
     describe(type.name, () => {
         it ('can be created', async () => {
             await TestBed.configureTestingModule({

@@ -10,7 +10,7 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  ViewContainerRef
+  ViewContainerRef,
   } from '@angular/core';
 import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art/angular-globalize';
 import { DateFormatterOptions } from 'globalize';
@@ -29,18 +29,18 @@ export abstract class BaseDatePickerDirective extends BaseDatePickerAccessorDire
   @Input() public orientRight: boolean | undefined;
   @Input() public format!: string;
   public initPopupDirective!: (resolver: ComponentFactoryResolver,
-    viewContainerRef: ViewContainerRef,
-    el: ElementRef,
-    injector: Injector) => void;
+                               viewContainerRef: ViewContainerRef,
+                               el: ElementRef,
+                               injector: Injector) => void;
 
   constructor(resolver: ComponentFactoryResolver,
-    viewContainerRef: ViewContainerRef,
-    el: ElementRef,
-    injector: Injector,
-    cultureService: CurrentCultureService,
-    private readonly globalizationService: GlobalizationService,
-    changeDetector: ChangeDetectorRef,
-    converterService: TypeConverterService) {
+              viewContainerRef: ViewContainerRef,
+              el: ElementRef,
+              injector: Injector,
+              cultureService: CurrentCultureService,
+              private readonly globalizationService: GlobalizationService,
+              changeDetector: ChangeDetectorRef,
+              converterService: TypeConverterService) {
     super(cultureService, converterService, changeDetector);
     this.initPopupDirective(resolver, viewContainerRef, el, injector);
   }

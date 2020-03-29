@@ -1,26 +1,24 @@
 import { NgModule } from '@angular/core';
 
-import 'globalize/number';
-// Uncomment the following line to include currency parsing/formatting functionality
-// import 'globalize/currency';
-import 'globalize/date';
 // Uncomment the following line to include plural data for formatting currency with name or code options
 // import 'globalize/plural';
 import Globalize from 'globalize';
+// Uncomment the following line to include currency parsing/formatting functionality
+// import 'globalize/currency';
+import 'globalize/date';
+import 'globalize/number';
 
 import likelySubtags from 'cldr-data/supplemental/likelySubtags.json';
 import numberingSystems from 'cldr-data/supplemental/numberingSystems.json';
 // Uncomment the following line to include currency CLDR data
 // import currencyData from 'cldr-data/supplemental/currencyData.json';
 
-
 // Uncomment the following line to include plural data for formatting currency with name or code options
-import plurals from 'cldr-data/supplemental/plurals.json';
+// import plurals from 'cldr-data/supplemental/plurals.json';
 
 import metaZones from 'cldr-data/supplemental/metaZones.json';
 import timeData from 'cldr-data/supplemental/timeData.json';
 import weekData from 'cldr-data/supplemental/weekData.json';
-
 
 /*
  * Module to add support for globalize

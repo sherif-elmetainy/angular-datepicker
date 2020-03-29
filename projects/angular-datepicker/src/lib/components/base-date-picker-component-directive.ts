@@ -1,19 +1,19 @@
-import { OnDestroy, HostListener, ChangeDetectorRef, Injectable, Directive } from '@angular/core';
-import { CurrentCultureService, TypeConverterService, GlobalizationService } from '@code-art/angular-globalize';
-import { isWithinRange, addDays } from 'date-fns';
+import { ChangeDetectorRef, Directive, HostListener, Injectable, OnDestroy } from '@angular/core';
+import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art/angular-globalize';
+import { addDays, isWithinRange } from 'date-fns';
 
+import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art/rx-helpers';
 import { BaseDatePickerAccessorDirective } from '../base-date-picker-accessor-directive';
 import { IDatePicker } from '../interfaces';
 import {
+  formatYear,
   getMonthYear,
   IMonthYearSelection,
-  ViewType,
-  sixArray,
-  sevenArray,
   KEY_CODE,
-  formatYear,
+  sevenArray,
+  sixArray,
+  ViewType,
 } from '../util';
-import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art/rx-helpers';
 
 @TakeUntilDestroyed()
 @Directive()

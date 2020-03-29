@@ -1,6 +1,6 @@
+import { IPopupEvents } from '../interfaces';
 import { applyMixins } from '../util';
 import { PopupImplentation } from './popup-implementation';
-import { IPopupEvents } from '../interfaces';
 
 const DECORATOR_APPLIED_SYMBOL = Symbol();
 
@@ -22,10 +22,12 @@ interface DirectiveType extends FunctionWithDecorator {
   ɵdir: DirectiveDefinition;
 }
 
+// tslint:disable-next-line: ban-types
 function isComponentType(type: Function): type is ComponentType {
   return type && !!(type as ComponentType).ɵcmp;
 }
 
+// tslint:disable-next-line: ban-types
 function isDirectiveType(type: Function): type is DirectiveType {
   return type && !!(type as DirectiveType).ɵdir;
 }
@@ -33,13 +35,13 @@ function isDirectiveType(type: Function): type is DirectiveType {
 function applyHooks(def: ComponentDefinition): void {
   const oldOnDestroy = def.onDestroy;
   const oldOnInit = def.onInit;
-  def.onDestroy = function (this: IPopupEvents): void {
+  def.onDestroy = function(this: IPopupEvents): void {
     if (oldOnDestroy) {
       oldOnDestroy.apply(this);
     }
     this.popupOnDestroy();
   };
-  def.onInit = function (this: IPopupEvents): void {
+  def.onInit = function(this: IPopupEvents): void {
     if (oldOnInit) {
       oldOnInit.apply(this);
     }

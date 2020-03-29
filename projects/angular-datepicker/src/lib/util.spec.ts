@@ -1,12 +1,12 @@
 
+import { TestBed } from '@angular/core/testing';
+import { GlobalizationService } from '@code-art/angular-globalize';
+import { initComponentTest } from '../test/init-test-env';
 import {
   formatYear, getMonthYear,
   isPlainObject, numArray,
-  sevenArray, sixArray
+  sevenArray, sixArray,
 } from './util';
-import { initComponentTest } from '../test/init-test-env';
-import { GlobalizationService } from '@code-art/angular-globalize';
-import { TestBed } from '@angular/core/testing';
 
 class Test {
   public v = 3;
@@ -38,7 +38,6 @@ describe('isPlainObject', () => {
   });
 });
 
-
 describe('Util formatYear', () => {
   let service: GlobalizationService;
   beforeEach(async () => {
@@ -67,7 +66,6 @@ describe('Util formatYear', () => {
     expect(formatYear(service, 0)).toBe('0000');
   });
 });
-
 
 describe('Util numArray', () => {
   it('returns correct length', () => {

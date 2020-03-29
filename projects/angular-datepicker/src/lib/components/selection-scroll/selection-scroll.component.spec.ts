@@ -8,7 +8,7 @@ describe('SelectionScrollComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SelectionScrollComponent ]
+      declarations: [ SelectionScrollComponent ],
     })
     .compileComponents();
   }));

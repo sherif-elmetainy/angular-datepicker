@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LanguageSwitchComponent } from './language-switch.component';
-import { AngularGlobalizeModule, CANG_SUPPORTED_CULTURES, CurrentCultureService } from '@code-art/angular-globalize';
 import { By } from '@angular/platform-browser';
+import { AngularGlobalizeModule, CANG_SUPPORTED_CULTURES, CurrentCultureService } from '@code-art/angular-globalize';
+import { LanguageSwitchComponent } from './language-switch.component';
 
 describe('LanguageSwitchComponent', () => {
   let component: LanguageSwitchComponent;

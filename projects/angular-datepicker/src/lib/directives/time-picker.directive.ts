@@ -5,10 +5,10 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DateFormatterOptions } from 'globalize';
 
+import { CurrentCultureService, GlobalizationService } from '@code-art/angular-globalize';
 import { BaseTimeValueAccessorDirective } from '../base-time-value-accessor-directive';
 import { TimePickerComponent } from '../components/time-picker/time-picker.component';
 import { IPopupDirective, ITimePicker } from '../interfaces';
-import { CurrentCultureService, GlobalizationService } from '@code-art/angular-globalize';
 import { Popup } from './popup';
 
 @Popup()
@@ -28,16 +28,16 @@ export class TimePickerDirective extends BaseTimeValueAccessorDirective
   @Input() public orientRight!: boolean;
   @Input() public format!: string;
   public initPopupDirective!: (resolver: ComponentFactoryResolver,
-    viewContainerRef: ViewContainerRef,
-    el: ElementRef, injector: Injector) => void;
+                               viewContainerRef: ViewContainerRef,
+                               el: ElementRef, injector: Injector) => void;
 
   constructor(resolver: ComponentFactoryResolver,
-    viewContainerRef: ViewContainerRef,
-    el: ElementRef,
-    injector: Injector,
-    cultureService: CurrentCultureService,
-    private readonly globalizationService: GlobalizationService,
-    changeDetector: ChangeDetectorRef) {
+              viewContainerRef: ViewContainerRef,
+              el: ElementRef,
+              injector: Injector,
+              cultureService: CurrentCultureService,
+              private readonly globalizationService: GlobalizationService,
+              changeDetector: ChangeDetectorRef) {
     super(cultureService, globalizationService, changeDetector);
     this.initPopupDirective(resolver, viewContainerRef, el, injector);
   }

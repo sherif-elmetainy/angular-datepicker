@@ -1,6 +1,6 @@
-import { ChangeDetectorRef, Inject, Input, Directive } from '@angular/core';
-import { DateFormatterOptions } from 'globalize';
+import { ChangeDetectorRef, Directive, Inject, Input } from '@angular/core';
 import { CurrentCultureService, GlobalizationService } from '@code-art/angular-globalize';
+import { DateFormatterOptions } from 'globalize';
 
 import { BaseValueAccessorDirective } from './base-value-accessor-directive';
 import { ITimePicker } from './interfaces';
@@ -23,8 +23,8 @@ export abstract class BaseTimeValueAccessorDirective extends BaseValueAccessorDi
   private _minutesStep = 15;
 
   constructor(cultureService: CurrentCultureService,
-    protected readonly globalizeService: GlobalizationService,
-    @Inject(ChangeDetectorRef) changeDetector: ChangeDetectorRef) {
+              protected readonly globalizeService: GlobalizationService,
+              @Inject(ChangeDetectorRef) changeDetector: ChangeDetectorRef) {
     super(cultureService, changeDetector);
     this.updateTimeOptions();
   }
@@ -92,8 +92,8 @@ export abstract class BaseTimeValueAccessorDirective extends BaseValueAccessorDi
         Math.max(BaseTimeValueAccessorDirective.minimumValue, val)));
     } else if (typeof val === 'string') {
 
-      for (let i = 0; i < BaseTimeValueAccessorDirective.formats.length; i++) {
-        d = this.globalizeService.parseDate(val, this.effectiveLocale, BaseTimeValueAccessorDirective.formats[i]);
+      for (const format of BaseTimeValueAccessorDirective.formats) {
+        d = this.globalizeService.parseDate(val, this.effectiveLocale, format);
         if (d) {
           break;
         }
@@ -114,8 +114,8 @@ export abstract class BaseTimeValueAccessorDirective extends BaseValueAccessorDi
     const inc = this.minutesStep * 60_000;
     while (val <= this.maxTime) {
       this.timeOptions.push({
-        val,
         date,
+        val,
       });
       date = new Date(date.valueOf() + inc);
       val += inc;

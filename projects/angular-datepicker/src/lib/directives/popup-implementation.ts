@@ -4,10 +4,10 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CurrentCultureService } from '@code-art/angular-globalize';
-import { combineLatest, Observable, BehaviorSubject } from 'rxjs';
+import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art/rx-helpers';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { PopupComponent } from '../components/popup/popup.component';
 import { IBaseValueAccessor, IPopupComponent, IPopupDirective, IPopupEvents } from '../interfaces';
-import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art/rx-helpers';
 
 @TakeUntilDestroyed()
 export abstract class PopupImplentation<T> implements IPopupDirective<T>, IPopupEvents {
@@ -165,12 +165,12 @@ export abstract class PopupImplentation<T> implements IPopupDirective<T>, IPopup
     let accessors = this._injector.get<ControlValueAccessor | ControlValueAccessor[]>(NG_VALUE_ACCESSOR);
     if (accessors) {
       accessors = Array.isArray(accessors) ? accessors : [accessors];
-      for (let i = 0; i < accessors.length; i++) {
-        if (accessors[i] !== this) {
-          if (this._controlValueAccessor && accessors[i] !== this._controlValueAccessor) {
+      for (const accessor of accessors) {
+        if (accessor !== this) {
+          if (this._controlValueAccessor && accessor !== this._controlValueAccessor) {
             throw new Error(`More than one control value accessor is provider.`);
           }
-          this._controlValueAccessor = accessors[i];
+          this._controlValueAccessor = accessor;
         }
       }
     }

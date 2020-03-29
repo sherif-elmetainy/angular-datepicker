@@ -1,19 +1,19 @@
-import { Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Type } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import {
-  CANG_LOCALE_PROVIDER,
-  StorageLocaleProviderService, CANG_DEFAULT_LOCALE_KEY,
-  CANG_LOCALE_STORAGE_KEY, AngularGlobalizeModule
+  AngularGlobalizeModule,
+  CANG_DEFAULT_LOCALE_KEY, CANG_LOCALE_PROVIDER,
+  CANG_LOCALE_STORAGE_KEY, StorageLocaleProviderService,
 } from '@code-art/angular-globalize';
 
-import { ICON_COMPONENTS } from '../lib/components/icons';
-import { GlobalizeDataModule } from '../../../../src/app/globalize-data/globalize-data.module';
-import { GlobalizeDataEnGBModule } from '../../../../src/app/globalize-data/globalize-data-en-gb.module';
 import { GlobalizeDataArEGModule } from '../../../../src/app/globalize-data/globalize-data-ar-eg.module';
 import { GlobalizeDataDeModule } from '../../../../src/app/globalize-data/globalize-data-de.module';
+import { GlobalizeDataEnGBModule } from '../../../../src/app/globalize-data/globalize-data-en-gb.module';
+import { GlobalizeDataModule } from '../../../../src/app/globalize-data/globalize-data.module';
+import { ICON_COMPONENTS } from '../lib/components/icons';
 
 export async function initComponentTest(...args: Type<any>[]): Promise<any> {
   localStorage.clear();

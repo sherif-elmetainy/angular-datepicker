@@ -6,7 +6,6 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { BaseTimeValueAccessorDirective } from '../../base-time-value-accessor-directive';
 
-
 @Component({
   providers: [{
     multi: true,
@@ -19,5 +18,5 @@ import { BaseTimeValueAccessorDirective } from '../../base-time-value-accessor-d
 export class TimePickerComponent extends BaseTimeValueAccessorDirective {
 
   public isPopup = false;
-  @ViewChild('timepickerSelect', { static: true }) timerpickerSelect?: ElementRef<HTMLSelectElement>;
+  @ViewChild('timepickerSelect', { static: true }) public timerpickerSelect?: ElementRef<HTMLSelectElement>;
 }

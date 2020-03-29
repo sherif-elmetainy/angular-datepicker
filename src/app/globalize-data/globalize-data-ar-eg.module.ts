@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
-import Globalize from 'globalize';
 import numbers from 'cldr-data/main/ar-EG/numbers.json';
+import Globalize from 'globalize';
 
 import calendar from 'cldr-data/main/ar-EG/ca-gregorian.json';
 import timeZones from 'cldr-data/main/ar-EG/timeZoneNames.json';
@@ -19,7 +19,6 @@ export class GlobalizeDataArEGModule {
 
     // uncomment the following line to include currency data
     // Globalize.load(currency);
-
 
     Globalize.load(calendar);
     Globalize.load(timeZones);

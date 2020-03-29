@@ -1,29 +1,29 @@
 import {
+  AfterViewInit,
   Component,
-  OnInit,
+  ElementRef,
+  EventEmitter,
+  HostListener,
   Input,
   OnChanges,
-  SimpleChanges,
+  OnInit,
   Output,
-  EventEmitter,
-  AfterViewInit,
-  ViewChild,
-  ElementRef,
   Renderer2,
-  HostListener,
+  SimpleChanges,
+  ViewChild,
 } from '@angular/core';
 import { IShowDateTimePickerTime } from '../../util';
 
 @Component({
   selector: 'cadp-selection-scroll',
   templateUrl: './selection-scroll.component.html',
-  styleUrls: ['./selection-scroll.component.scss']
+  styleUrls: ['./selection-scroll.component.scss'],
 })
 export class SelectionScrollComponent implements OnInit, OnChanges, AfterViewInit {
 
   @Input() public minValue = 0;
   @Input() public maxValue = 1;
-  @Input() formatter: (n: number) => string;
+  @Input() public formatter: (n: number) => string;
   @Input() public value: number | undefined;
   @Output() public valueChange = new EventEmitter<number>();
   @Output() public dismissed = new EventEmitter<boolean>();
