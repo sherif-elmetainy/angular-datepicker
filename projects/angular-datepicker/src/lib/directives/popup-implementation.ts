@@ -1,7 +1,8 @@
 import {
-  ComponentFactory, ComponentFactoryResolver, ComponentRef,
+  ComponentFactory, ComponentFactoryResolver,
   ElementRef, EventEmitter, Injector, ViewContainerRef,
 } from '@angular/core';
+import type { ComponentRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CurrentCultureService } from '@code-art/angular-globalize';
 import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art/rx-helpers';

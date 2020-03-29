@@ -1,4 +1,6 @@
-import { ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, OnDestroy, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
+import type { OnDestroy } from '@angular/core';
+
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art/angular-globalize';
 

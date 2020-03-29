@@ -1,17 +1,15 @@
 import {
   ChangeDetectorRef,
-  ComponentFactory,
   ComponentFactoryResolver,
   Directive,
   ElementRef,
   HostListener,
-  Injectable,
   Injector,
   Input,
-  OnDestroy,
-  OnInit,
   ViewContainerRef,
   } from '@angular/core';
+
+import type { ComponentFactory, OnDestroy, OnInit } from '@angular/core';
 import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art/angular-globalize';
 import { DateFormatterOptions } from 'globalize';
 import { BaseDatePickerAccessorDirective } from '../base-date-picker-accessor-directive';

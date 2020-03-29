@@ -1,4 +1,6 @@
-import { ChangeDetectorRef, Directive, HostListener, Injectable, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Directive, HostListener } from '@angular/core';
+import type { OnDestroy } from '@angular/core';
+
 import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art/angular-globalize';
 import { addDays, isWithinRange } from 'date-fns';
 

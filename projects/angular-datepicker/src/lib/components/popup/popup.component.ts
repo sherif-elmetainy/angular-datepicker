@@ -1,7 +1,8 @@
 import {
   Component, ComponentFactoryResolver,
-  ComponentRef, ElementRef, HostListener, Inject, ViewChild,
+  ElementRef, HostListener, Inject, ViewChild,
 } from '@angular/core';
+import type { ComponentRef } from '@angular/core';
 import { PopupHostDirective } from '../../directives/popup-host.directive';
 import { IBaseValueAccessor, IPopupComponent, IPopupDirective } from '../../interfaces';
 

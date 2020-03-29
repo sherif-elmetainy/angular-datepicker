@@ -1,4 +1,6 @@
-import { ChangeDetectorRef, Directive, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { ChangeDetectorRef, Directive, EventEmitter, Input, Output } from '@angular/core';
+import type { OnDestroy } from '@angular/core';
+
 import { BehaviorSubject, combineLatest, Subscription } from 'rxjs';
 
 import { CurrentCultureService } from '@code-art/angular-globalize';

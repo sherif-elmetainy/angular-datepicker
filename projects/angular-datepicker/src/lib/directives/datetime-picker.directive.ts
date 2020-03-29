@@ -1,7 +1,8 @@
 import {
-  ChangeDetectorRef, ComponentFactory, ComponentFactoryResolver, Directive, ElementRef,
-  EventEmitter, forwardRef, HostListener, Injector, Input, OnDestroy, OnInit, Output, ViewContainerRef,
+  ChangeDetectorRef, ComponentFactoryResolver, Directive, ElementRef,
+  EventEmitter, forwardRef, HostListener, Injector, Input, Output, ViewContainerRef,
 } from '@angular/core';
+import type { ComponentFactory, OnDestroy, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art/angular-globalize';
 import { DateFormatterOptions } from 'globalize';

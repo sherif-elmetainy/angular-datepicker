@@ -1,17 +1,14 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
   HostListener,
   Input,
-  OnChanges,
-  OnInit,
   Output,
   Renderer2,
-  SimpleChanges,
   ViewChild,
 } from '@angular/core';
+import type { OnInit, OnChanges, AfterViewInit, SimpleChanges } from '@angular/core';
 import { IShowDateTimePickerTime } from '../../util';
 
 @Component({

@@ -1,4 +1,5 @@
-import { Component, forwardRef, OnDestroy } from '@angular/core';
+import { Component, forwardRef } from '@angular/core';
+import type { OnDestroy } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { BaseDatePickerComponentDirective } from '../base-date-picker-component-directive';
