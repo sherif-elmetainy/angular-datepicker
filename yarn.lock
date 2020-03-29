@@ -1042,10 +1042,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@code-art/angular-globalize@^9.0.0":
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/@code-art/angular-globalize/-/angular-globalize-9.0.0.tgz#51fe77073af6cb589a11a8d793ab43e1baea7650"
-  integrity sha512-w/J/XqgHZv2En3cT0wH58ml/5ZohdmB6V2XOfNZttT9ouMq2MVc49k+1UMl0FK5dzyQUqr2I5DpHHG7HIk0yVQ==
+"@code-art/angular-globalize@^9.0.1":
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/@code-art/angular-globalize/-/angular-globalize-9.0.1.tgz#292872f9cf4eaf3e58a85efe8279162920c93218"
+  integrity sha512-7VLoORsHVF5gulbahjX+W1HYGHlY4uor//QfjZuq7xewnrMB+vs8xKWbo4MAdRm67hqTkCD+cXz9AX/0ceg5qA==
 
 "@code-art/rx-helpers@^9.0.1":
   version "9.0.1"
