@@ -6,7 +6,7 @@ import type { ComponentFactory, OnDestroy, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DateFormatterOptions } from 'globalize';
 
-import { CurrentCultureService, GlobalizationService } from '@code-art/angular-globalize';
+import { CurrentCultureService, GlobalizationService } from '@code-art-eg/angular-globalize';
 import { BaseTimeValueAccessorDirective } from '../base-time-value-accessor-directive';
 import { TimePickerComponent } from '../components/time-picker/time-picker.component';
 import { IPopupDirective, ITimePicker } from '../interfaces';

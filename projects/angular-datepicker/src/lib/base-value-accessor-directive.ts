@@ -3,8 +3,8 @@ import type { OnDestroy } from '@angular/core';
 
 import { BehaviorSubject, combineLatest, Subscription } from 'rxjs';
 
-import { CurrentCultureService } from '@code-art/angular-globalize';
-import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art/rx-helpers';
+import { CurrentCultureService } from '@code-art-eg/angular-globalize';
+import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art-eg/rx-helpers';
 import { IBaseValueAccessor, ICompositeObject } from './interfaces';
 
 @TakeUntilDestroyed()

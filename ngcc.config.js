@@ -1,6 +1,6 @@
 module.exports = {
   packages: {
-    '@code-art/angular-globalize': {
+    '@code-art-eg/angular-globalize': {
       ignorableDeepImportMatchers: [
         /\/globalize\/dist\/globalize$/
       ]

@@ -10,7 +10,7 @@ import {
   } from '@angular/core';
 
 import type { ComponentFactory, OnDestroy, OnInit } from '@angular/core';
-import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art/angular-globalize';
+import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art-eg/angular-globalize';
 import { DateFormatterOptions } from 'globalize';
 import { BaseDatePickerAccessorDirective } from '../base-date-picker-accessor-directive';
 import { BaseDatePickerComponentDirective } from '../components/base-date-picker-component-directive';

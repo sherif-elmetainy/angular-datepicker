@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AngularGlobalizeModule } from '@code-art/angular-globalize';
+import { AngularGlobalizeModule } from '@code-art-eg/angular-globalize';
 
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { DateRangePickerComponent } from './components/date-picker/date-range-picker.component';

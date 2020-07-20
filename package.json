@@ -13,7 +13,8 @@
     "testapp": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "icons": "cd ./tools && ts-node build-icons.ts"
+    "icons": "cd ./tools && ts-node build-icons.ts",
+    "pub": "cd dist/angular-datepicker && yarn publish"
   },
   "private": true,
   "dependencies": {
@@ -25,8 +26,8 @@
     "@angular/platform-browser": "~9.1.0",
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
-    "@code-art/angular-globalize": "^9.0.1",
-    "@code-art/rx-helpers": "^9.0.1",
+    "@code-art-eg/angular-globalize": "^9.0.5",
+    "@code-art-eg/rx-helpers": "^9.0.3",
     "cldr": "^4.11.0",
     "cldr-data": "36.0.0",
     "core-js": "^2.5.4",

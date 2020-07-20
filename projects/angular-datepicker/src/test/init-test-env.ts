@@ -7,7 +7,7 @@ import {
   AngularGlobalizeModule,
   CANG_DEFAULT_LOCALE_KEY, CANG_LOCALE_PROVIDER,
   CANG_LOCALE_STORAGE_KEY, StorageLocaleProviderService,
-} from '@code-art/angular-globalize';
+} from '@code-art-eg/angular-globalize';
 
 import { GlobalizeDataArEGModule } from '../../../../src/app/globalize-data/globalize-data-ar-eg.module';
 import { GlobalizeDataDeModule } from '../../../../src/app/globalize-data/globalize-data-de.module';

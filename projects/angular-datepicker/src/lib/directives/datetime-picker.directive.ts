@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import type { ComponentFactory, OnDestroy, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art/angular-globalize';
+import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art-eg/angular-globalize';
 import { DateFormatterOptions } from 'globalize';
 import { Subscription } from 'rxjs';
 import { BaseDatePickerAccessorDirective } from '../base-date-picker-accessor-directive';

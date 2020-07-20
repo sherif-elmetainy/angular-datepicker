@@ -4,12 +4,12 @@
   "lib": {
     "entryFile": "src/public_api.ts",
     "umdModuleIds": {
-      "@code-art/angular-globalize": "codeArt.angularGlobalize",
-      "@code-art/rx-helpers": "codeArt.rxHelpers",
+      "@code-art-eg/angular-globalize": "codeArt.angularGlobalize",
+      "@code-art-eg/rx-helpers": "codeArt.rxHelpers",
       "date-fns": "dateFns",
       "globalize": "globalize"
     },
-    "amdId": "@code-art/angular-datepicker",
+    "amdId": "@code-art-eg/angular-datepicker",
     "umdId": "codeArt.angularDatepicker"
   }
 }

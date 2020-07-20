@@ -2,9 +2,9 @@ import { ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, Output }
 import type { OnDestroy } from '@angular/core';
 
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art/angular-globalize';
+import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art-eg/angular-globalize';
 
-import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art/rx-helpers';
+import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art-eg/rx-helpers';
 import { startOfToday } from 'date-fns';
 import { BaseDatePickerAccessorDirective } from '../../base-date-picker-accessor-directive';
 import { IDateTimePicker } from '../../interfaces';

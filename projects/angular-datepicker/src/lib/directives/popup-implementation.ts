@@ -4,8 +4,8 @@ import {
 } from '@angular/core';
 import type { ComponentRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { CurrentCultureService } from '@code-art/angular-globalize';
-import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art/rx-helpers';
+import { CurrentCultureService } from '@code-art-eg/angular-globalize';
+import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art-eg/rx-helpers';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { PopupComponent } from '../components/popup/popup.component';
 import { IBaseValueAccessor, IPopupComponent, IPopupDirective, IPopupEvents } from '../interfaces';

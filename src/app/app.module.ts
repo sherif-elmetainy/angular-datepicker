@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AngularGlobalizeModule } from '@code-art/angular-globalize';
+import { AngularGlobalizeModule } from '@code-art-eg/angular-globalize';
 
 import { AppComponent } from './app.component';
 
-import { AngularDatepickerModule } from '@code-art/angular-datepicker';
+import { AngularDatepickerModule } from '@code-art-eg/angular-datepicker';
 import { LanguageSwitchComponent } from './components/language-switch/language-switch.component';
 
 import { GlobalizeDataArEGModule } from './globalize-data/globalize-data-ar-eg.module';

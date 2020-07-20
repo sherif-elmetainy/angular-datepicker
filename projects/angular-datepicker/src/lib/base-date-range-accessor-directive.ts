@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Directive, Inject, Input } from '@angular/core';
-import { CurrentCultureService, TypeConverterService } from '@code-art/angular-globalize';
+import { CurrentCultureService, TypeConverterService } from '@code-art-eg/angular-globalize';
 
 import { isEqual } from 'date-fns';
 import { BaseValueAccessorDirective } from './base-value-accessor-directive';

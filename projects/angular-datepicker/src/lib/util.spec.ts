@@ -1,6 +1,6 @@
 
 import { TestBed } from '@angular/core/testing';
-import { GlobalizationService } from '@code-art/angular-globalize';
+import { GlobalizationService } from '@code-art-eg/angular-globalize';
 import { initComponentTest } from '../test/init-test-env';
 import {
   formatYear, getMonthYear,

@@ -27,7 +27,7 @@
       "dom"
     ],
     "paths": {
-      "@code-art/angular-datepicker": [
+      "@code-art-eg/angular-datepicker": [
         "dist/angular-datepicker",
       ],
       "globalize": [

@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Directive, Inject, Input } from '@angular/core';
-import { CurrentCultureService, GlobalizationService } from '@code-art/angular-globalize';
+import { CurrentCultureService, GlobalizationService } from '@code-art-eg/angular-globalize';
 import { DateFormatterOptions } from 'globalize';
 
 import { BaseValueAccessorDirective } from './base-value-accessor-directive';

@@ -1,8 +1,8 @@
-# @code-art/angular-datepicker
+# @code-art-eg/angular-datepicker
 
 ## About the library
 
-The `@code-art/angular-datepicker` library is a javascript library that a datepicker for [Angular 8](https://angular.io). 
+The `@code-art-eg/angular-datepicker` library is a javascript library that a datepicker for [Angular 8](https://angular.io). 
 
 ## Consuming the library
 
@@ -12,15 +12,15 @@ The library depends on [angular-globalize](https://github.com/code-art-eg/angula
 To install the library in your Angular application you need to run the following commands:
 
 ```bash
-$ ng add @code-art/angular-globalize
-$ npm install @code-art/angular-datepicker
+$ ng add @code-art-eg/angular-globalize
+$ npm install @code-art-eg/angular-datepicker
 ```
 
 Or
 
 ```bash
-$ ng add @code-art/angular-globalize
-$ yarn add @code-art/angular-datepicker
+$ ng add @code-art-eg/angular-globalize
+$ yarn add @code-art-eg/angular-datepicker
 ```
 
 ## 2. Import the angular module
@@ -29,7 +29,7 @@ After getting the library from npm you can use it in your Angular `AppModule`:
 
 ```typescript
 
-import { AngularDatepickerModule } from '@code-art/angular-datepicker';
+import { AngularDatepickerModule } from '@code-art-eg/angular-datepicker';
 
 @NgModule({
   declarations: [

@@ -1,10 +1,10 @@
 import { ChangeDetectorRef, Directive, HostListener } from '@angular/core';
 import type { OnDestroy } from '@angular/core';
 
-import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art/angular-globalize';
+import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art-eg/angular-globalize';
 import { addDays, isWithinRange } from 'date-fns';
 
-import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art/rx-helpers';
+import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art-eg/rx-helpers';
 import { BaseDatePickerAccessorDirective } from '../base-date-picker-accessor-directive';
 import { IDatePicker } from '../interfaces';
 import {
