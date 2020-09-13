@@ -5,7 +5,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art-eg/angular-globalize';
 
 import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art-eg/rx-helpers';
-import { startOfToday } from 'date-fns';
+import startOfToday from 'date-fns/startOfToday';
 import { BaseDatePickerAccessorDirective } from '../../base-date-picker-accessor-directive';
 import { IDateTimePicker } from '../../interfaces';
 import { IShowDateTimePickerTime } from '../../util';

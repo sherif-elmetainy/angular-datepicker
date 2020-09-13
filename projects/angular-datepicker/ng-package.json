@@ -6,6 +6,10 @@
     "umdModuleIds": {
       "@code-art-eg/angular-globalize": "codeArt.angularGlobalize",
       "@code-art-eg/rx-helpers": "codeArt.rxHelpers",
+      "date-fns/isWithinInterval": "dateFns.isWithinInterval",
+      "date-fns/addDays": "dateFns.addDays",
+      "date-fns/isEqual": "dateFns.isEqual",
+      "date-fns/startOfToday": "dateFns.startOfToday",
       "date-fns": "dateFns",
       "globalize": "globalize"
     },

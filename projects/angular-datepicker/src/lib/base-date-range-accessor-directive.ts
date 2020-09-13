@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Directive, Inject, Input } from '@angular/core';
 import { CurrentCultureService, TypeConverterService } from '@code-art-eg/angular-globalize';
 
-import { isEqual } from 'date-fns';
+import dateEqual from 'date-fns/isEqual';
 import { BaseValueAccessorDirective } from './base-value-accessor-directive';
 import { IDateRangeOptions } from './interfaces';
 import { isPlainObject } from './util';
@@ -16,9 +16,10 @@ export abstract class BaseDateRangeAccessorDirective<T extends IDateRangeOptions
   private readonly defaultMaxDate: Date;
   private readonly defaultMinDate: Date;
 
-  private _rangeSelection = false;
   private _minDate: Date | null = null;
   private _maxDate: Date | null = null;
+  public rangeSelection = false;
+
 
   constructor(cultureService: CurrentCultureService,
               protected readonly converterService: TypeConverterService,
@@ -26,16 +27,6 @@ export abstract class BaseDateRangeAccessorDirective<T extends IDateRangeOptions
     super(cultureService, changeDetector);
     this.defaultMinDate = new Date(BaseDateRangeAccessorDirective.minimumYear, 0, 1);
     this.defaultMaxDate = new Date(BaseDateRangeAccessorDirective.maximumYear, 11, 31);
-  }
-
-  public set rangeSelection(val: boolean) {
-    if (val !== this._rangeSelection) {
-      this._rangeSelection = val;
-    }
-  }
-
-  public get rangeSelection(): boolean {
-    return this._rangeSelection;
   }
 
   @Input() public set minDate(val: Date) {
@@ -126,10 +117,10 @@ export abstract class BaseDateRangeAccessorDirective<T extends IDateRangeOptions
 
   public compareValues(v1: any, v2: any): boolean {
     if (v1 instanceof Date && v2 instanceof Date) {
-      return isEqual(v1, v2);
+      return dateEqual(v1, v2);
     }
     if (v1 && v2 && isPlainObject(v1) && isPlainObject(v2)) {
-      return isEqual(v1.from, v2.from) && isEqual(v1.to, v2.to);
+      return dateEqual(v1.from, v2.from) && dateEqual(v1.to, v2.to);
     }
     return false;
   }

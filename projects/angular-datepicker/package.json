@@ -1,8 +1,8 @@
 {
   "name": "@code-art-eg/angular-datepicker",
-  "version": "9.0.2",
+  "version": "10.0.0",
   "private": false,
-  "description": "A date and time picker for Angular 9",
+  "description": "A date and time picker for Angular 10",
   "author": "Sherif Elmetainy (Code Art)",
   "license": "MIT",
   "bugs": {
@@ -20,15 +20,18 @@
     "globalize"
   ],
   "homepage": "https://github.com/code-art-eg/angular-datepicker#readme",
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
   "peerDependencies": {
-    "@angular/common": "^9.0.4",
-    "@angular/core": "^9.0.4",
-    "@angular/forms": "^9.0.4",
-    "@code-art-eg/angular-globalize": "^9.0.0",
-    "@code-art-eg/rx-helpers": "^9.0.1",
+    "@angular/common": ">= 10.0.0 < 11",
+    "@angular/core": ">= 10.0.0 < 11",
+    "@angular/forms": ">= 10.0.0 < 11",
+    "@code-art-eg/angular-globalize": "~10.0.0",
+    "@code-art-eg/rx-helpers": "^10.0.0",
     "cldr-data": ">=36.0.0",
-    "date-fns": "~1.30.1",
-    "globalize": "^1.4.2",
+    "date-fns": "~2.16.1",
+    "globalize": "^1.6.0",
     "rxjs": "^6.5.4"
   }
 }

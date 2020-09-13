@@ -15,13 +15,14 @@ export abstract class BaseValueAccessorDirective<T> implements OnDestroy, IBaseV
   private readonly _boundChildren: Array<IBaseValueAccessor<T> & T> = [];
   private readonly _subs: Subscription[] = [];
   private readonly _localeSubject = new BehaviorSubject<string|undefined>(undefined);
-  private _parent?: IBaseValueAccessor<T> & T;
+
   private _effectiveLocale?: string;
   private _disabled = false;
   private _onchange?: (val: any) => void;
   private _ontouch?: () => void;
   private _value: any = null;
 
+  public parent?: IBaseValueAccessor<T> & T;
   constructor(readonly cultureService: CurrentCultureService, readonly changeDetector: ChangeDetectorRef) {
     this.effectiveLocale = this.cultureService.currentCulture;
     combineLatest([this._localeSubject, this.cultureService.cultureObservable])
@@ -65,14 +66,6 @@ export abstract class BaseValueAccessorDirective<T> implements OnDestroy, IBaseV
     if (child.parent === thisT) {
       child.parent = undefined;
     }
-  }
-
-  public get parent(): (IBaseValueAccessor<T> & T) | undefined {
-    return this._parent;
-  }
-
-  public set parent(val: (IBaseValueAccessor<T> & T) | undefined) {
-    this._parent = val;
   }
 
   public get effectiveLocale(): string | undefined {
@@ -155,8 +148,8 @@ export abstract class BaseValueAccessorDirective<T> implements OnDestroy, IBaseV
 
   public ngOnDestroy() {
     const thisT = this as unknown as (IBaseValueAccessor<T> & T);
-    if (this._parent) {
-      this._parent.removeBoundChild(thisT);
+    if (this.parent) {
+      this.parent.removeBoundChild(thisT);
     }
     for (let i = 0; i < this._boundChildren.length; i++) {
       this._subs[i].unsubscribe();

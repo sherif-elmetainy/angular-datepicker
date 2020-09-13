@@ -2,7 +2,8 @@ import { ChangeDetectorRef, Directive, HostListener } from '@angular/core';
 import type { OnDestroy } from '@angular/core';
 
 import { CurrentCultureService, GlobalizationService, TypeConverterService } from '@code-art-eg/angular-globalize';
-import { addDays, isWithinRange } from 'date-fns';
+import isWithinInterval from 'date-fns/isWithinInterval';
+import addDays from 'date-fns/addDays';
 
 import { takeUntilDestroyed, TakeUntilDestroyed } from '@code-art-eg/rx-helpers';
 import { BaseDatePickerAccessorDirective } from '../base-date-picker-accessor-directive';
@@ -53,11 +54,11 @@ export abstract class BaseDatePickerComponentDirective extends BaseDatePickerAcc
       .pipe(takeUntilDestroyed(this))
       .subscribe(() => this._calculated = false);
     this.cultureService.cultureObservable
-    .pipe(takeUntilDestroyed(this))
-    .subscribe((_) => {
-      this.monthFormatter = (m) => globalizationService.getMonthName(m, this.effectiveLocale, 'wide');
-      this.yearFormatter = (y) => formatYear(globalizationService, y, this.effectiveLocale);
-    });
+      .pipe(takeUntilDestroyed(this))
+      .subscribe((_) => {
+        this.monthFormatter = (m) => globalizationService.getMonthName(m, this.effectiveLocale, 'wide');
+        this.yearFormatter = (y) => formatYear(globalizationService, y, this.effectiveLocale);
+      });
   }
 
   @HostListener('window:keyup', ['$event'])
@@ -93,7 +94,10 @@ export abstract class BaseDatePickerComponentDirective extends BaseDatePickerAcc
   }
 
   public onDayClick(date: Date): boolean {
-    if (this.disabled || !isWithinRange(date, this.minDate, this.maxDate)) {
+    if (this.disabled || !isWithinInterval(date, {
+      start: this.minDate,
+      end: this.maxDate,
+    })) {
       return false;
     }
     this.monthPickerVisible = false;
@@ -251,7 +255,10 @@ export abstract class BaseDatePickerComponentDirective extends BaseDatePickerAcc
     ) {
       classes.other = true;
     }
-    if (!isWithinRange(date, this.minDate, this.maxDate)) {
+    if (!isWithinInterval(date, {
+      start: this.minDate,
+      end: this.maxDate,
+    })) {
       classes.disabled = true;
     }
     if (this.selectionStart && this.selectionEnd &&
@@ -267,7 +274,11 @@ export abstract class BaseDatePickerComponentDirective extends BaseDatePickerAcc
         classes.multi = true;
       }
     }
-    if (this.selectionStart && this.selectionEnd && isWithinRange(date, this.selectionStart, this.selectionEnd)) {
+    if (this.selectionStart && this.selectionEnd
+      && isWithinInterval(date, {
+        start: this.selectionStart,
+        end: this.selectionEnd,
+      })) {
       classes.selected = true;
     }
     if (this.todayHighlight && this.todayDate && date.valueOf() === this.todayDate.valueOf()) {
@@ -288,16 +299,22 @@ export abstract class BaseDatePickerComponentDirective extends BaseDatePickerAcc
   }
 
   private addFocusDate(days: number): void {
+    const interval = {
+      start: this._viewStartDate,
+      end: this._viewEndDate,
+    };
     if (this._focusDate) {
       this._focusDate = addDays(this._focusDate, days);
-    } else if (this.selectionStart && isWithinRange(this.selectionStart, this._viewStartDate, this._viewEndDate)) {
+    } else if (this.selectionStart
+      && isWithinInterval(this.selectionStart, interval)) {
       this._focusDate = this.selectionStart;
-    } else if (this.todayDate && isWithinRange(this.todayDate, this._viewStartDate, this._viewEndDate)) {
+    } else if (this.todayDate
+      && isWithinInterval(this.todayDate, interval)) {
       this._focusDate = this.todayDate;
     } else {
       this._focusDate = this._startDate;
     }
-    if (this._focusDate && !isWithinRange(this._focusDate, this._viewStartDate, this._viewEndDate)) {
+    if (this._focusDate && !isWithinInterval(this._focusDate, interval)) {
       this.onCommand({
         month: this._focusDate.getMonth(),
         year: this._focusDate.getFullYear(),
@@ -322,7 +339,10 @@ export abstract class BaseDatePickerComponentDirective extends BaseDatePickerAcc
         this._allDays.push(d);
         d = addDays(d, 1);
       }
-      if (this._focusDate && !isWithinRange(this._focusDate, this._viewStartDate, this._viewEndDate)) {
+      if (this._focusDate && !isWithinInterval(this._focusDate, {
+        start: this._viewStartDate,
+        end: this._viewEndDate,
+      })) {
         this._focusDate = null;
       }
       this._calculated = true;

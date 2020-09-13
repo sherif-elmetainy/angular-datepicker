@@ -19,6 +19,7 @@
           "options": {
             "aot": true,
             "outputPath": "dist/angular-datepicker-app",
+            "allowedCommonJsDependencies": ["globalize", "globalize/number", "globalize/data"],
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -144,13 +145,13 @@
           "options": {
             "tsConfig": "projects/angular-datepicker/tsconfig.lib.json",
             "project": "projects/angular-datepicker/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/angular-datepicker/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {

@@ -32,16 +32,16 @@ function isDirectiveType(type: Function): type is DirectiveType {
   return type && !!(type as DirectiveType).ɵdir;
 }
 
-function applyHooks(def: ComponentDefinition): void {
-  const oldOnDestroy = def.onDestroy;
-  const oldOnInit = def.onInit;
-  def.onDestroy = function(this: IPopupEvents): void {
+function applyHooks(def: FunctionWithDecorator): void {
+  const oldOnDestroy = def.prototype.ngOnDestroy as () => void;
+  const oldOnInit = def.prototype.ngOnInit as () => void;
+  def.prototype.ngOnDestroy = function(this: IPopupEvents): void {
     if (oldOnDestroy) {
       oldOnDestroy.apply(this);
     }
     this.popupOnDestroy();
   };
-  def.onInit = function(this: IPopupEvents): void {
+  def.prototype.ngOnInit = function(this: IPopupEvents): void {
     if (oldOnInit) {
       oldOnInit.apply(this);
     }
@@ -52,10 +52,8 @@ function applyHooks(def: ComponentDefinition): void {
 export function Popup(): ClassDecorator {
   return (target: FunctionWithDecorator) => {
     applyMixins(target, PopupImplentation);
-    if (isComponentType(target)) {
-      applyHooks(target.ɵcmp);
-    } else if (isDirectiveType(target)) {
-      applyHooks(target.ɵdir);
+    if (isComponentType(target) || isDirectiveType(target)) {
+      applyHooks(target);
     }
   };
 }

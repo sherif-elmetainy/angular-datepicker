@@ -1,5 +1,5 @@
 import { Directive, Input } from '@angular/core';
-import { startOfToday } from 'date-fns';
+import startOfToday from 'date-fns/startOfToday';
 import { BaseDateRangeAccessorDirective } from './base-date-range-accessor-directive';
 import { IDatePicker } from './interfaces';
 
