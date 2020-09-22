@@ -232,7 +232,7 @@ export abstract class PopupImplentation<T> implements IPopupDirective<T>, IPopup
   private doParseValue(v: any): any {
     if (typeof v === 'string') {
       const index = v.indexOf('_');
-      if (index === 0 && /\d/.exec(v)) {
+      if (index === 0 && !/\d/.test(v)) {
         v = '';
       }
     }
