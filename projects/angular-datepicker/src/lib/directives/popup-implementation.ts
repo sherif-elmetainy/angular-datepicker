@@ -180,38 +180,13 @@ export abstract class PopupImplentation<T> implements IPopupDirective<T>, IPopup
         + `Make sure FormsModule from @angular/forms is imported in your application.`);
     }
     this._controlValueAccessor.registerOnChange((v: any) => {
-      this._controlValue = v;
-      if (v === null || v === undefined || /^\s*$/.test(v)) {
-        v = null;
-      }
-      const val = v === null ? null : typeof this.parseValue === 'function' ? this.parseValue(v) : v;
-      const coercedValue = val === null ? val : this.coerceValue(val);
-      if (v !== null) {
-        if (coercedValue) {
-          this.value = val;
-        } else {
-          this.raiseOnChange(v);
-        }
-      } else {
-        this.value = null;
-      }
+      v = this.handleInputChange(v);
     });
     combineLatest([this.cultureService.cultureObservable,
     this.valueChange.asObservable(), this._formatObservable])
     .pipe(takeUntilDestroyed(this))
-    .subscribe((v) => {
-      if (this._controlValueAccessor) {
-        const [l, val, f] = v;
-        if (typeof val === 'string') {
-          this._controlValueAccessor.writeValue(val);
-        } else {
-          const locale = this.locale || l;
-          const coercedValue = this.coerceValue(this._controlValue);
-          if (!this.compareValues(coercedValue, val)) {
-            this._controlValueAccessor.writeValue(this.formatValue(val, locale, f));
-          }
-        }
-      }
+    .subscribe(([lang, newValue, format]) => {
+      this.handlePickerChange(newValue, lang, format);
     });
     this._controlValueAccessor.registerOnTouched(() => {
       this.raiseOnTouch();
@@ -219,5 +194,38 @@ export abstract class PopupImplentation<T> implements IPopupDirective<T>, IPopup
     if (this._controlValueAccessor && typeof this._controlValueAccessor.setDisabledState === 'function') {
       this._controlValueAccessor.setDisabledState(this.disabled);
     }
+  }
+
+  private handlePickerChange(newValue: any, lang: string, format: string) {
+    if (this._controlValueAccessor) {
+      if (typeof newValue === 'string') {
+        this._controlValueAccessor.writeValue(newValue);
+      } else {
+        const locale = this.locale || lang;
+        const coercedValue = this.coerceValue(this._controlValue);
+        if (!this.compareValues(coercedValue, newValue)) {
+          this._controlValueAccessor.writeValue(this.formatValue(newValue, locale, format));
+        }
+      }
+    }
+  }
+
+  private handleInputChange(v: any) {
+    this._controlValue = v;
+    if (v === null || v === undefined || /^\s*$/.test(v)) {
+      v = null;
+    }
+    const val = v === null ? null : typeof this.parseValue === 'function' ? this.parseValue(v) : v;
+    const coercedValue = val === null ? val : this.coerceValue(val);
+    if (v !== null) {
+      if (coercedValue) {
+        this.value = val;
+      } else {
+        this.raiseOnChange(v);
+      }
+    } else {
+      this.value = null;
+    }
+    return v;
   }
 }
