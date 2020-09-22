@@ -219,14 +219,18 @@ export abstract class PopupImplentation<T> implements IPopupDirective<T>, IPopup
     const coercedValue = val === null ? val : this.coerceValue(val);
     if (val !== null) {
       if (coercedValue) {
-        this.value = val;
-        this.raiseOnChange(val);
+        if (!this.compareValues(coercedValue, this.value)) {
+          this.value = coercedValue;
+          this.raiseOnChange(coercedValue);
+        }
       } else {
         this.raiseOnChange(v);
       }
     } else {
-      this.value = null;
-      this.raiseOnChange(null);
+      if (this.value != null) {
+        this.value = null;
+        this.raiseOnChange(null);
+      }
     }
   }
 
