@@ -217,23 +217,24 @@ export abstract class PopupImplentation<T> implements IPopupDirective<T>, IPopup
     }
     const val = this.doParseValue(v);
     const coercedValue = val === null ? val : this.coerceValue(val);
-    if (v !== null) {
+    if (val !== null) {
       if (coercedValue) {
         this.value = val;
+        this.raiseOnChange(val);
       } else {
         this.raiseOnChange(v);
       }
     } else {
       this.value = null;
+      this.raiseOnChange(null);
     }
-    return v;
   }
 
   private doParseValue(v: any): any {
     if (typeof v === 'string') {
       const index = v.indexOf('_');
       if (index === 0 && !/\d/.test(v)) {
-        v = '';
+        return null;
       }
     }
     const val = v === null ? null : typeof this.parseValue === 'function' ? this.parseValue(v) : v;

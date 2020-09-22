@@ -1,6 +1,6 @@
 {
   "name": "@code-art-eg/angular-datepicker",
-  "version": "10.0.2",
+  "version": "10.0.3",
   "private": false,
   "description": "A date and time picker for Angular 10",
   "author": "Sherif Elmetainy (Code Art)",
