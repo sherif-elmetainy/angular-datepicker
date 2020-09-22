@@ -180,14 +180,14 @@ export abstract class PopupImplentation<T> implements IPopupDirective<T>, IPopup
         + `Make sure FormsModule from @angular/forms is imported in your application.`);
     }
     this._controlValueAccessor.registerOnChange((v: any) => {
-      v = this.handleInputChange(v);
+      this.handleInputChange(v);
     });
     combineLatest([this.cultureService.cultureObservable,
     this.valueChange.asObservable(), this._formatObservable])
-    .pipe(takeUntilDestroyed(this))
-    .subscribe(([lang, newValue, format]) => {
-      this.handlePickerChange(newValue, lang, format);
-    });
+      .pipe(takeUntilDestroyed(this))
+      .subscribe(([lang, newValue, format]) => {
+        this.handlePickerChange(newValue, lang, format);
+      });
     this._controlValueAccessor.registerOnTouched(() => {
       this.raiseOnTouch();
     });
@@ -196,7 +196,7 @@ export abstract class PopupImplentation<T> implements IPopupDirective<T>, IPopup
     }
   }
 
-  private handlePickerChange(newValue: any, lang: string, format: string) {
+  private handlePickerChange(newValue: any, lang: string, format: string): void {
     if (this._controlValueAccessor) {
       if (typeof newValue === 'string') {
         this._controlValueAccessor.writeValue(newValue);
@@ -210,12 +210,12 @@ export abstract class PopupImplentation<T> implements IPopupDirective<T>, IPopup
     }
   }
 
-  private handleInputChange(v: any) {
+  private handleInputChange(v: any): void {
     this._controlValue = v;
     if (v === null || v === undefined || /^\s*$/.test(v)) {
       v = null;
     }
-    const val = v === null ? null : typeof this.parseValue === 'function' ? this.parseValue(v) : v;
+    const val = this.doParseValue(v);
     const coercedValue = val === null ? val : this.coerceValue(val);
     if (v !== null) {
       if (coercedValue) {
@@ -227,5 +227,16 @@ export abstract class PopupImplentation<T> implements IPopupDirective<T>, IPopup
       this.value = null;
     }
     return v;
+  }
+
+  private doParseValue(v: any): any {
+    if (typeof v === 'string') {
+      const index = v.indexOf('_');
+      if (index === 0 && /\d/.exec(v)) {
+        v = '';
+      }
+    }
+    const val = v === null ? null : typeof this.parseValue === 'function' ? this.parseValue(v) : v;
+    return val;
   }
 }
